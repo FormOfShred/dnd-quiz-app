@@ -1,3 +1,4 @@
+import 'package:dungeon_buddy/data/character_state_data.dart';
 import 'package:flutter/material.dart';
 
 class Home extends StatelessWidget {
@@ -51,7 +52,12 @@ class MyCard extends StatelessWidget {
             ),
             margin: const EdgeInsets.all(20),
             child: InkWell(
-              onTap: () => Navigator.pushNamed(context, route!, arguments: 0),
+              onTap: () {
+                Navigator.pushNamed(context, route!, arguments: {
+                  'questionIndex': 0,
+                  'characterState': CharacterState(),
+                });
+              },
               borderRadius: BorderRadius.circular(10),
               child: Center(
                   child: Text(title,

@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:dungeon_buddy/data/background_data.dart';
+import 'package:dungeon_buddy/data/character_state_data.dart';
 import 'package:dungeon_buddy/data/class_data.dart';
 import 'package:dungeon_buddy/data/race_data.dart';
 import 'package:dungeon_buddy/model/quiz_model.dart' as my_quiz_model;
@@ -8,7 +9,10 @@ import 'package:path_provider/path_provider.dart';
 
 class Quiz extends StatelessWidget {
   final int questionIndex;
-  const Quiz({Key? key, required this.questionIndex}) : super(key: key);
+  final CharacterState characterState;
+  const Quiz(
+      {Key? key, required this.questionIndex, required this.characterState})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) => Scaffold(
@@ -28,13 +32,16 @@ class Quiz extends StatelessWidget {
                 context, '/', (route) => false),
           ),
         ),
-        body: QuizUI(questionIndex: questionIndex),
+        body: QuizUI(
+            questionIndex: questionIndex, characterState: characterState),
       );
 }
 
 class QuizUI extends StatefulWidget {
   final int questionIndex;
-  const QuizUI({super.key, required this.questionIndex});
+  final CharacterState characterState;
+  const QuizUI(
+      {super.key, required this.questionIndex, required this.characterState});
 
   @override
   State<QuizUI> createState() => _QuizUIState();
@@ -123,17 +130,31 @@ class _QuizUIState extends State<QuizUI> {
                     }
                   else
                     {
-                      writeCharacter(mainQuiz[widget.questionIndex]
+                      /* writeCharacter(mainQuiz[widget.questionIndex]
                           .answers[tappedCardIndex]
                           .answer),
-                      readCharacters(),
+                      readCharacters(), */
+                      for (var map in mainQuiz[widget.questionIndex]
+                          .answers[tappedCardIndex]
+                          .scores
+                          .entries)
+                        {
+                          debugPrint('$map'),
+                          widget.characterState
+                              .updateScores(map.key, map.value),
+                        },
                       if (widget.questionIndex < mainQuiz.length - 1)
                         {
-                          Navigator.pushNamed(context, '/quiz',
-                              arguments: widget.questionIndex + 1),
+                          Navigator.pushNamed(context, '/quiz', arguments: {
+                            'questionIndex': widget.questionIndex + 1,
+                            'characterState': widget.characterState
+                          }),
                         }
                       else
-                        {Navigator.pushNamed(context, '/result')}
+                        {
+                          Navigator.pushNamed(context, '/result',
+                              arguments: widget.characterState)
+                        }
                     }
                 },
                 child: const Text("Submit"),

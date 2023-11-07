@@ -2,9 +2,9 @@ import 'package:dungeon_buddy/model/quiz_model.dart';
 
 final List<Quiz> raceData = [
   Quiz(question: "What is your favorite animal?", answers: [
-    Answer(answer: "Dog", classScores: {
-      "Barbarian": 0,
-      "Bard": 0,
+    Answer(answer: "Dog", scores: {
+      "Barbarian": 20,
+      "Bard": 2,
       "Cleric": 0,
       "Druid": 0,
       "Fighter": 0,
@@ -15,6 +15,6 @@ final List<Quiz> raceData = [
       "Sorcerer": 0,
       "Warlock": 0,
       "Wizard": 0,
-    }, raceScores: {}, backgroundScores: {}),
+    }),
   ])
 ];

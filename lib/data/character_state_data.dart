@@ -1,5 +1,7 @@
-class QuizState {
-  List<Map<String, int>> scores = [
+import 'dart:convert';
+
+class CharacterState {
+  List<Map<String, int>> characterState = [
     {
       "Barbarian": 0,
       "Bard": 0,
@@ -35,4 +37,20 @@ class QuizState {
       "Soldier": 0
     }
   ];
+
+  void updateScores(String key, int value) {
+    // search through maps for key and add to it's value the given value
+    for (var map in characterState) {
+      if (map.containsKey(key)) {
+        map[key] = map[key]! + value;
+      }
+    }
+    print(characterState);
+  }
+
+  String printCharacterState(CharacterState state) {
+    String jsonString = jsonEncode(characterState);
+
+    return jsonString;
+  }
 }

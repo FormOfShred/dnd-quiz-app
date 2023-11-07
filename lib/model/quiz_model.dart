@@ -7,13 +7,10 @@ class Quiz {
 
 class Answer {
   final String answer;
-  final Map<String, int> classScores;
-  final Map<String, int> raceScores;
-  final Map<String, int> backgroundScores;
+  final Map<String, int> scores;
 
-  Answer(
-      {required this.answer,
-      required this.classScores,
-      required this.raceScores,
-      required this.backgroundScores});
+  Answer({
+    required this.answer,
+    required this.scores,
+  });
 }

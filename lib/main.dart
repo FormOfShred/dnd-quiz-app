@@ -1,3 +1,4 @@
+import 'package:dungeon_buddy/data/character_state_data.dart';
 import 'package:dungeon_buddy/src/home.dart';
 import 'package:dungeon_buddy/src/quiz.dart';
 import 'package:dungeon_buddy/src/result.dart';
@@ -22,9 +23,14 @@ class MyApp extends StatelessWidget {
       routes: {
         '/quiz': (context) {
           return Quiz(
-              questionIndex: ModalRoute.of(context)?.settings.arguments as int);
+              questionIndex: (ModalRoute.of(context)?.settings.arguments
+                  as Map)['questionIndex'] as int,
+              characterState: (ModalRoute.of(context)?.settings.arguments
+                  as Map)['characterState'] as CharacterState);
         },
-        '/result': (context) => const Result(),
+        '/result': (context) => Result(
+            characterState:
+                ModalRoute.of(context)?.settings.arguments as CharacterState),
       },
       home: const Home(),
     );

@@ -2,7 +2,7 @@ import 'package:dungeon_buddy/model/quiz_model.dart';
 
 final List<Quiz> backgroundData = [
   Quiz(question: "What is your favorite day?", answers: [
-    Answer(answer: "Monday", classScores: {
+    Answer(answer: "Monday", scores: {
       "Barbarian": 0,
       "Bard": 0,
       "Cleric": 0,
@@ -15,6 +15,6 @@ final List<Quiz> backgroundData = [
       "Sorcerer": 0,
       "Warlock": 0,
       "Wizard": 0,
-    }, raceScores: {}, backgroundScores: {}),
+    }),
   ])
 ];

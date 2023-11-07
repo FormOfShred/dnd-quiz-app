@@ -1,7 +1,9 @@
+import 'package:dungeon_buddy/data/character_state_data.dart';
 import 'package:flutter/material.dart';
 
 class Result extends StatelessWidget {
-  const Result({Key? key}) : super(key: key);
+  final CharacterState characterState;
+  const Result({Key? key, required this.characterState}) : super(key: key);
 
   @override
   Widget build(BuildContext context) => Scaffold(
