@@ -1,0 +1,46 @@
+import 'package:dungeon_buddy/src/home.dart';
+import 'package:dungeon_buddy/src/quiz.dart';
+import 'package:dungeon_buddy/src/result.dart';
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  // This widget is the root of your application.
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Flutter Demo',
+      theme: ThemeData(
+        colorScheme: myColorScheme,
+        useMaterial3: true,
+      ),
+      routes: {
+        '/quiz': (context) {
+          return Quiz(
+              questionIndex: ModalRoute.of(context)?.settings.arguments as int);
+        },
+        '/result': (context) => const Result(),
+      },
+      home: const Home(),
+    );
+  }
+}
+
+const myColorScheme = ColorScheme(
+    primary: Color(0xFFE78230), // Custom primary color
+    secondary: Color(0xff2D4159), // Custom secondary color
+    background: Color(0xFF272D43), // Custom background color
+    surface: Color(0xFFCCDAE5), // Custom surface color
+    onPrimary: Color(0xFFFFFFFF), // Custom text color on primary
+    onSecondary: Color(0xFFFFFFFF), // Custom text color on secondary
+    onBackground: Color(0xFFFFFFFF), // Custom text color on background
+    onSurface: Color(0xFF000000),
+    brightness: Brightness.dark,
+    error: Colors.red,
+    onError: Colors.white // Custom text color on surface
+    );
