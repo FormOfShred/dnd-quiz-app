@@ -152,6 +152,9 @@ class _QuizUIState extends State<QuizUI> {
                         }
                       else
                         {
+                          debugPrint(widget.characterState
+                              .calculateCharacter()
+                              .toString()),
                           Navigator.pushNamed(context, '/result',
                               arguments: widget.characterState)
                         }
