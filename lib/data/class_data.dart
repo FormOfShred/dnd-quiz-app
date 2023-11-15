@@ -27,20 +27,4 @@ final List<Quiz> classData = [
       "Wizard": -1,
     }),
   ]),
-  Quiz(question: "What is your favorite animal?", answers: [
-    Answer(answer: "Dog", scores: {
-      "Barbarian": 5,
-      "Bard": 2,
-      "Cleric": 0,
-      "Druid": 0,
-      "Fighter": 0,
-      "Monk": 0,
-      "Paladin": 0,
-      "Ranger": 0,
-      "Rogue": 0,
-      "Sorcerer": 0,
-      "Warlock": 0,
-      "Wizard": 0,
-    }),
-  ])
 ];
