@@ -10,10 +10,15 @@ class Result extends StatelessWidget {
     return character.calculateCharacter();
   }
 
-  Future<void> saveQuizResult(String characterName, String quizResult) async {
+  Future<void> saveQuizResult(String quizResult) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
 
-    prefs.setString(characterName, quizResult);
+    List<String> characters = prefs.getStringList('characters') ?? [];
+    characters.add(quizResult);
+
+    prefs.setStringList('characters', characters);
+
+    debugPrint(prefs.getStringList('characters').toString());
   }
 
   @override
@@ -50,7 +55,7 @@ class Result extends StatelessWidget {
                         height: 60,
                         child: GestureDetector(
                           onTap: () => {
-                            saveQuizResult("Character1",
+                            saveQuizResult(
                                 characterData(characterState).toString()),
                             Navigator.pushNamedAndRemoveUntil(
                                 context, '/', (route) => false),
