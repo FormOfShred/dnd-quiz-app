@@ -1,6 +1,6 @@
 import 'package:dungeon_buddy/data/character_state_data.dart';
+import 'package:dungeon_buddy/widgets/result_card.dart';
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class Result extends StatelessWidget {
   final CharacterState characterState;
@@ -8,17 +8,6 @@ class Result extends StatelessWidget {
 
   Map<String, String> characterData(CharacterState character) {
     return character.calculateCharacter();
-  }
-
-  Future<void> saveQuizResult(String quizResult) async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-
-    List<String> characters = prefs.getStringList('characters') ?? [];
-    characters.add(quizResult);
-
-    prefs.setStringList('characters', characters);
-
-    debugPrint(prefs.getStringList('characters').toString());
   }
 
   @override
@@ -55,10 +44,10 @@ class Result extends StatelessWidget {
                         height: 60,
                         child: GestureDetector(
                           onTap: () => {
-                            saveQuizResult(
+                            debugPrint(
                                 characterData(characterState).toString()),
-                            Navigator.pushNamedAndRemoveUntil(
-                                context, '/', (route) => false),
+                            /*Navigator.pushNamedAndRemoveUntil(
+                                context, '/', (route) => false),*/
                           },
                           child: Card(
                             color: Theme.of(context).colorScheme.primary,
@@ -81,7 +70,7 @@ class Result extends StatelessWidget {
                   )))));
 }
 
-class ResultCard extends StatelessWidget {
+/*class ResultCard extends StatelessWidget {
   final Map<String, String> character;
   const ResultCard({
     super.key,
@@ -134,4 +123,4 @@ class ResultCard extends StatelessWidget {
           )),
     );
   }
-}
+}*/
