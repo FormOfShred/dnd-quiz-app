@@ -1,5 +1,6 @@
 import 'package:dungeon_buddy/data/character_state_data.dart';
 import 'package:dungeon_buddy/src/home.dart';
+import 'package:dungeon_buddy/src/overview.dart';
 import 'package:dungeon_buddy/src/quiz.dart';
 import 'package:dungeon_buddy/src/result.dart';
 import 'package:flutter/material.dart';
@@ -31,6 +32,7 @@ class MyApp extends StatelessWidget {
         '/result': (context) => Result(
             characterState:
                 ModalRoute.of(context)?.settings.arguments as CharacterState),
+        '/overview': (context) => const Overview(),
       },
       home: const Home(),
     );

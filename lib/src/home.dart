@@ -28,7 +28,7 @@ class Home extends StatelessWidget {
               ),*/
               MyCard(title: "Create Character", route: "/quiz"),
               SizedBox(height: 20),
-              MyCard(title: "Character Overview", route: "/"),
+              MyCard(title: "Character Overview", route: "/overview"),
               SizedBox(height: 20),
             ],
           )),

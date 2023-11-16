@@ -64,7 +64,6 @@ class _QuizUIState extends State<QuizUI> {
   Future<String> get _localPath async {
     final directory = await getApplicationDocumentsDirectory();
 
-    debugPrint('path: $directory.path');
     return directory.path;
   }
 
@@ -84,7 +83,6 @@ class _QuizUIState extends State<QuizUI> {
     try {
       final file = await _localFile;
       final contents = await file.readAsString();
-      debugPrint(contents);
       return contents;
     } catch (e) {
       debugPrint(e.toString());
@@ -139,7 +137,6 @@ class _QuizUIState extends State<QuizUI> {
                           .scores
                           .entries)
                         {
-                          debugPrint('$map'),
                           widget.characterState
                               .updateScores(map.key, map.value),
                         },
@@ -152,9 +149,6 @@ class _QuizUIState extends State<QuizUI> {
                         }
                       else
                         {
-                          debugPrint(widget.characterState
-                              .calculateCharacter()
-                              .toString()),
                           Navigator.pushNamed(context, '/result',
                               arguments: widget.characterState)
                         }

@@ -1,5 +1,6 @@
 import 'package:dungeon_buddy/data/character_state_data.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Result extends StatelessWidget {
   final CharacterState characterState;
@@ -7,6 +8,12 @@ class Result extends StatelessWidget {
 
   Map<String, String> characterData(CharacterState character) {
     return character.calculateCharacter();
+  }
+
+  Future<void> saveQuizResult(String characterName, String quizResult) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+
+    prefs.setString(characterName, quizResult);
   }
 
   @override
@@ -31,8 +38,41 @@ class Result extends StatelessWidget {
           child: SingleChildScrollView(
               child: Padding(
                   padding: const EdgeInsets.all(20.0),
-                  child: ResultCard(
-                    character: characterData(characterState),
+                  child: Column(
+                    children: [
+                      ResultCard(
+                        character: characterData(characterState),
+                      ),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      SizedBox(
+                        height: 60,
+                        child: GestureDetector(
+                          onTap: () => {
+                            saveQuizResult("Character1",
+                                characterData(characterState).toString()),
+                            Navigator.pushNamedAndRemoveUntil(
+                                context, '/', (route) => false),
+                          },
+                          child: Card(
+                            color: Theme.of(context).colorScheme.primary,
+                            elevation: 5,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            child: Center(
+                              child: Text("Save Character",
+                                  style: TextStyle(
+                                    color:
+                                        Theme.of(context).colorScheme.onPrimary,
+                                    fontSize: 20,
+                                  )),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
                   )))));
 }
 

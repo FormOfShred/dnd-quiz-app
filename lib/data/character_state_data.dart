@@ -45,7 +45,6 @@ class CharacterState {
         map[key] = map[key]! + value;
       }
     }
-    print(characterState);
   }
 
   String printCharacterState(CharacterState state) {
