@@ -1,5 +1,6 @@
 import 'package:dungeon_buddy/data/character_state_data.dart';
 import 'package:dungeon_buddy/widgets/result_card.dart';
+import 'package:dungeon_buddy/widgets/save_button.dart';
 import 'package:flutter/material.dart';
 
 class Result extends StatelessWidget {
@@ -8,6 +9,13 @@ class Result extends StatelessWidget {
 
   Map<String, String> characterData(CharacterState character) {
     return character.calculateCharacter();
+  }
+
+  Function() saveCharacter() {
+    debugPrint(characterData(characterState).toString());
+    return () {
+      //Navigator.pushNamedAndRemoveUntil(context, '/', (route) => false)
+    };
   }
 
   @override
@@ -40,87 +48,9 @@ class Result extends StatelessWidget {
                       const SizedBox(
                         height: 20,
                       ),
-                      SizedBox(
-                        height: 60,
-                        child: GestureDetector(
-                          onTap: () => {
-                            debugPrint(
-                                characterData(characterState).toString()),
-                            /*Navigator.pushNamedAndRemoveUntil(
-                                context, '/', (route) => false),*/
-                          },
-                          child: Card(
-                            color: Theme.of(context).colorScheme.primary,
-                            elevation: 5,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(10),
-                            ),
-                            child: Center(
-                              child: Text("Save Character",
-                                  style: TextStyle(
-                                    color:
-                                        Theme.of(context).colorScheme.onPrimary,
-                                    fontSize: 20,
-                                  )),
-                            ),
-                          ),
-                        ),
+                      SaveButton(
+                        onTap: saveCharacter,
                       ),
                     ],
                   )))));
 }
-
-/*class ResultCard extends StatelessWidget {
-  final Map<String, String> character;
-  const ResultCard({
-    super.key,
-    required this.character,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      height: 500,
-      child: Card(
-          color: Theme.of(context).colorScheme.surface,
-          elevation: 5,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(10),
-          ),
-          child: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text("YOUR CHARACTER",
-                    style: TextStyle(
-                        color: Theme.of(context).colorScheme.onSurface,
-                        fontSize: 30,
-                        fontWeight: FontWeight.bold)),
-                const SizedBox(height: 20),
-                Text(
-                  'Character: ${character["Class"]}',
-                  style: TextStyle(
-                      color: Theme.of(context).colorScheme.onSurface,
-                      fontSize: 20,
-                      fontWeight: FontWeight.w400),
-                ),
-                Text(
-                  "Race: ${character["Race"]}",
-                  style: TextStyle(
-                      color: Theme.of(context).colorScheme.onSurface,
-                      fontSize: 20,
-                      fontWeight: FontWeight.w400),
-                ),
-                Text(
-                  "Background: ${character["Background"]}",
-                  style: TextStyle(
-                      color: Theme.of(context).colorScheme.onSurface,
-                      fontSize: 20,
-                      fontWeight: FontWeight.w400),
-                )
-              ],
-            ),
-          )),
-    );
-  }
-}*/

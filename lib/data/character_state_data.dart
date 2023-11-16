@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 class CharacterState {
   List<Map<String, int>> characterState = [
     {
@@ -45,12 +43,6 @@ class CharacterState {
         map[key] = map[key]! + value;
       }
     }
-  }
-
-  String printCharacterState(CharacterState state) {
-    String jsonString = jsonEncode(characterState);
-
-    return jsonString;
   }
 
   Map<String, String> calculateCharacter() {

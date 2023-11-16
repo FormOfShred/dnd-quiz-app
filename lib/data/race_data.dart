@@ -4,7 +4,7 @@ final List<Quiz> raceData = [
   Quiz(question: "What is your favorite animal?", answers: [
     Answer(answer: "Dog", scores: {
       "Dragonborn": 0,
-      "Dwarf": 0,
+      "Dwarf": 2,
       "Elf": 0,
       "Gnome": 0,
       "Half-Elf": 0,

@@ -1,0 +1,14 @@
+class Character {
+    final String class;
+    final String race;
+    final String background;
+    // optional?
+    final String name;
+    final List<int> abilities
+
+    const Character {(
+        required this.class;
+        required this.race;
+        this.background;
+    )}
+}
