@@ -59,4 +59,9 @@ class DatabaseHelper {
   )
 ''');
   }
+
+  Future<void> updateCharacterName(int id, String characterName) async {
+    await db.update('characters', {'characterName': characterName},
+        where: 'id = ?', whereArgs: [id]);
+  }
 }

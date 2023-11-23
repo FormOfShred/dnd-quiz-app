@@ -3,7 +3,7 @@ class Character {
   final String recommendedClass;
   final String recommendedRace;
   final String recommendedBackground;
-  final String? characterName;
+  String? characterName;
 
   Character(
       {this.id,
