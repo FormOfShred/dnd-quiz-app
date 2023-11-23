@@ -18,16 +18,7 @@ class DatabaseHelper {
     db = await openDatabase(
       join(path, 'dungeon_buddy.db'),
       onCreate: (database, version) async {
-        await database.execute(
-          """
-          CREATE TABLE characters(
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            recommendedClass TEXT NOT NULL,
-            recommendedRace TEXT NOT NULL,
-            recommendedBackground TEXT NOT NULL
-          )
-          """,
-        );
+        createTable();
       },
       version: 1,
     );
@@ -51,5 +42,21 @@ class DatabaseHelper {
 
   Future<void> deleteCharacter(int id) async {
     await db.delete('characters', where: 'id = ?', whereArgs: [id]);
+  }
+
+  Future<void> dropTable() async {
+    await db.execute('DROP TABLE IF EXISTS characters');
+  }
+
+  Future<void> createTable() async {
+    await db.execute('''
+  CREATE TABLE characters (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    recommendedClass TEXT NOT NULL,
+    recommendedRace TEXT NOT NULL,
+    recommendedBackground TEXT NOT NULL,
+    characterName TEXT
+  )
+''');
   }
 }

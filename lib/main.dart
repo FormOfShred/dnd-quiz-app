@@ -1,9 +1,12 @@
 import 'package:dungeon_buddy/data/character_state_data.dart';
+import 'package:dungeon_buddy/model/character_model.dart';
+import 'package:dungeon_buddy/src/character.dart';
 import 'package:dungeon_buddy/src/home.dart';
 import 'package:dungeon_buddy/src/overview.dart';
 import 'package:dungeon_buddy/src/quiz.dart';
 import 'package:dungeon_buddy/src/result.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 void main() {
   runApp(const MyApp());
@@ -20,6 +23,9 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: myColorScheme,
         useMaterial3: true,
+        textTheme: GoogleFonts.cinzelTextTheme(
+          Theme.of(context).textTheme,
+        ),
       ),
       routes: {
         '/quiz': (context) {
@@ -33,6 +39,10 @@ class MyApp extends StatelessWidget {
             characterState:
                 ModalRoute.of(context)?.settings.arguments as CharacterState),
         '/overview': (context) => const Overview(),
+        '/character': (context) => CharacterView(
+              character:
+                  ModalRoute.of(context)?.settings.arguments as Character,
+            ),
       },
       home: const Home(),
     );

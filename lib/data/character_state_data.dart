@@ -51,7 +51,8 @@ class CharacterState {
     Map<String, String> characterMap = {
       "Class": "",
       "Race": "",
-      "Background": ""
+      "Background": "",
+      "name": ""
     };
 
     // find class with highest int

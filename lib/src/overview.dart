@@ -102,7 +102,10 @@ class CharacterPreview extends StatelessWidget {
     return SizedBox(
         height: 80,
         child: GestureDetector(
-          onTap: () => {debugPrint("Tapped")},
+          onTap: () => {
+            debugPrint(character.toString()),
+            Navigator.pushNamed(context, '/character', arguments: character)
+          },
           child: Card(
               color: Theme.of(context).colorScheme.surface,
               elevation: 5,

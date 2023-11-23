@@ -30,7 +30,8 @@ class _ResultState extends State<Result> {
     Character character = Character(
         recommendedClass: recommendedClass,
         recommendedRace: recommendedRace,
-        recommendedBackground: recommendedBackground);
+        recommendedBackground: recommendedBackground,
+        characterName: "");
 
     await dbHelper.insertCharacter(character);
   }
