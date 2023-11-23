@@ -115,15 +115,23 @@ class CharacterPreview extends StatelessWidget {
               child: Center(
                 child: Row(
                   children: [
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Text(character.recommendedClass,
+                    if (character.characterName!.isEmpty) ...[
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Text(character.recommendedClass,
+                            style: const TextStyle(fontSize: 20)),
+                      ),
+                      Text('- ${character.recommendedRace}',
                           style: const TextStyle(fontSize: 20)),
-                    ),
-                    Text('- ${character.recommendedRace}',
-                        style: const TextStyle(fontSize: 20)),
-                    Text(' - ${character.recommendedBackground}',
-                        style: const TextStyle(fontSize: 20)),
+                      Text(' - ${character.recommendedBackground}',
+                          style: const TextStyle(fontSize: 20)),
+                    ] else ...[
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Text(character.characterName!,
+                            style: const TextStyle(fontSize: 20)),
+                      ),
+                    ]
                   ],
                 ),
               )),

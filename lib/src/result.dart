@@ -34,6 +34,12 @@ class _ResultState extends State<Result> {
         characterName: "");
 
     await dbHelper.insertCharacter(character);
+    debugPrint("Character saved");
+    if (mounted) {
+      setState(() {
+        Navigator.pushNamedAndRemoveUntil(context, '/', (route) => false);
+      });
+    }
   }
 
   @override
@@ -77,9 +83,7 @@ class _ResultState extends State<Result> {
                       const SizedBox(
                         height: 20,
                       ),
-                      SaveButton(
-                        onTap: saveCharacter,
-                      ),
+                      SaveButton(onTap: saveCharacter)
                     ],
                   )))));
 }
