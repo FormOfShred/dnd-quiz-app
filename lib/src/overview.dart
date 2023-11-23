@@ -59,7 +59,31 @@ class _OverviewState extends State<Overview> {
         children: [
           const SizedBox(height: 10),
           for (var i = 0; i < characters.length; i++) ...[
-            CharacterPreview(character: characters[i]),
+            Dismissible(
+                key: UniqueKey(),
+                direction: DismissDirection.endToStart,
+                onDismissed: (direction) => setState(() {
+                      dbHelper.deleteCharacter(characters[i].id!);
+                      characters.removeAt(i);
+                    }),
+                background: Container(color: Colors.red),
+                confirmDismiss: (direction) => showDialog(
+                      context: context,
+                      builder: (context) => AlertDialog(
+                        title: const Text("Delete Confirmation"),
+                        content: const Text(
+                            "Are you sure you want to delete this character?"),
+                        actions: [
+                          TextButton(
+                              onPressed: () => Navigator.of(context).pop(false),
+                              child: const Text("CANCEL")),
+                          TextButton(
+                              onPressed: () => Navigator.of(context).pop(true),
+                              child: const Text("DELETE"))
+                        ],
+                      ),
+                    ),
+                child: CharacterPreview(character: characters[i])),
           ]
         ],
       ));
@@ -78,9 +102,7 @@ class CharacterPreview extends StatelessWidget {
     return SizedBox(
         height: 80,
         child: GestureDetector(
-          onTap: () => {
-            Navigator.pushNamed(context, '/character', arguments: character)
-          },
+          onTap: () => {debugPrint("Tapped")},
           child: Card(
               color: Theme.of(context).colorScheme.surface,
               elevation: 5,
