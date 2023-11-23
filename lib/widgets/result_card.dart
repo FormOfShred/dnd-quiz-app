@@ -28,7 +28,7 @@ class ResultCard extends StatelessWidget {
                         fontWeight: FontWeight.bold)),
                 const SizedBox(height: 20),
                 Text(
-                  'Character: ${character["Class"]}',
+                  'Class: ${character["Class"]}',
                   style: TextStyle(
                       color: Theme.of(context).colorScheme.onSurface,
                       fontSize: 20,

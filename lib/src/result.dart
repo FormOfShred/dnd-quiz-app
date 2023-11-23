@@ -1,21 +1,49 @@
 import 'package:dungeon_buddy/data/character_state_data.dart';
+import 'package:dungeon_buddy/model/character_model.dart';
+import 'package:dungeon_buddy/model/database_helper.dart';
 import 'package:dungeon_buddy/widgets/result_card.dart';
 import 'package:dungeon_buddy/widgets/save_button.dart';
 import 'package:flutter/material.dart';
 
-class Result extends StatelessWidget {
+class Result extends StatefulWidget {
   final CharacterState characterState;
   const Result({Key? key, required this.characterState}) : super(key: key);
+
+  @override
+  State<Result> createState() => _ResultState();
+}
+
+class _ResultState extends State<Result> {
+  late DatabaseHelper dbHelper;
 
   Map<String, String> characterData(CharacterState character) {
     return character.calculateCharacter();
   }
 
-  Function() saveCharacter() {
-    debugPrint(characterData(characterState).toString());
-    return () {
-      //Navigator.pushNamedAndRemoveUntil(context, '/', (route) => false)
-    };
+  Future<void> saveCharacter() async {
+    debugPrint(characterData(widget.characterState).toString());
+    String recommendedClass = characterData(widget.characterState)['Class']!;
+    String recommendedRace = characterData(widget.characterState)['Race']!;
+    String recommendedBackground =
+        characterData(widget.characterState)['Background']!;
+
+    Character character = Character(
+        recommendedClass: recommendedClass,
+        recommendedRace: recommendedRace,
+        recommendedBackground: recommendedBackground);
+
+    await dbHelper.insertCharacter(character);
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    dbHelper = DatabaseHelper();
+    dbHelper.initDB().whenComplete(() async {
+      setState(() {
+        debugPrint('Database initialized');
+      });
+    });
   }
 
   @override
@@ -43,7 +71,7 @@ class Result extends StatelessWidget {
                   child: Column(
                     children: [
                       ResultCard(
-                        character: characterData(characterState),
+                        character: characterData(widget.characterState),
                       ),
                       const SizedBox(
                         height: 20,

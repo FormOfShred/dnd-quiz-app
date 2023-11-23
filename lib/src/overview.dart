@@ -1,5 +1,6 @@
+import 'package:dungeon_buddy/model/character_model.dart';
+import 'package:dungeon_buddy/model/database_helper.dart';
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class Overview extends StatefulWidget {
   const Overview({Key? key}) : super(key: key);
@@ -9,23 +10,31 @@ class Overview extends StatefulWidget {
 }
 
 class _OverviewState extends State<Overview> {
-  late List<String> results = [];
+  late DatabaseHelper dbHelper;
+  List<Character> characters = [];
 
-  Future<List<String>?> getQuizResult() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
+  Future<List<Character>?> getQuizResult() async {
+    List<Character> characters = await dbHelper.getCharacters();
 
-    debugPrint(prefs.getStringList('characters').toString());
-
-    return prefs.getStringList('characters');
+    return characters;
   }
 
   @override
   void initState() {
     super.initState();
-    getQuizResult().then((value) => setState(() {
-          results = value ?? [];
-          debugPrint(results.toString());
-        }));
+    dbHelper = DatabaseHelper();
+    dbHelper.initDB().whenComplete(() async {
+      setState(() {
+        debugPrint('Database initialized');
+        getQuizResult().then((value) {
+          setState(() {
+            for (var i = 0; i < value!.length; i++) {
+              characters.add(value[i]);
+            }
+          });
+        });
+      });
+    });
   }
 
   @override
@@ -49,47 +58,50 @@ class _OverviewState extends State<Overview> {
       body: Column(
         children: [
           const SizedBox(height: 10),
-          for (var i = 0; i < results.length; i++) ...[
-            CharacterPreview(result: results[i]),
+          for (var i = 0; i < characters.length; i++) ...[
+            CharacterPreview(character: characters[i]),
           ]
         ],
       ));
 }
 
 class CharacterPreview extends StatelessWidget {
+  final Character character;
+
   const CharacterPreview({
     super.key,
-    required this.result,
+    required this.character,
   });
-
-  final String result;
-
-  // extract class and race from {Class: Wizard, Race: Dragonborn, Background: Acolyte
-  String extractClass(String result) {
-    return result.substring(result.indexOf('Class: ') + 7,
-        result.indexOf(',', result.indexOf('Class: ') + 7));
-  }
-
-  // extract race from {Class: Wizard, Race: Dragonborn, Background: Acolyte}
-  
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
         height: 80,
-        child: Card(
-            color: Theme.of(context).colorScheme.surface,
-            elevation: 5,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(0),
-            ),
-            child: Center(
-              child: Row(
-                children: [
-                  Text(extractClass(result),
-                      style: const TextStyle(fontSize: 20)),
-                ],
+        child: GestureDetector(
+          onTap: () => {
+            Navigator.pushNamed(context, '/character', arguments: character)
+          },
+          child: Card(
+              color: Theme.of(context).colorScheme.surface,
+              elevation: 5,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(0),
               ),
-            )));
+              child: Center(
+                child: Row(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(character.recommendedClass,
+                          style: const TextStyle(fontSize: 20)),
+                    ),
+                    Text('- ${character.recommendedRace}',
+                        style: const TextStyle(fontSize: 20)),
+                    Text(' - ${character.recommendedBackground}',
+                        style: const TextStyle(fontSize: 20)),
+                  ],
+                ),
+              )),
+        ));
   }
 }
