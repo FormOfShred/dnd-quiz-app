@@ -72,7 +72,7 @@ class NameRow extends StatelessWidget {
           child: Center(
             child: TextFormField(
               maxLines: null,
-              initialValue: widget.character.characterName,
+              initialValue: widget.character.characterName!.isEmpty ? "Choose Name" : widget.character.characterName!,
               decoration: const InputDecoration(
                 border: InputBorder.none,
               ),

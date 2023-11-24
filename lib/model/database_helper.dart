@@ -18,7 +18,15 @@ class DatabaseHelper {
     db = await openDatabase(
       join(path, 'dungeon_buddy.db'),
       onCreate: (database, version) async {
-        createTable();
+        await db.execute('''
+  CREATE TABLE characters (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    recommendedClass TEXT NOT NULL,
+    recommendedRace TEXT NOT NULL,
+    recommendedBackground TEXT NOT NULL,
+    characterName TEXT
+  )
+''');
       },
       version: 1,
     );

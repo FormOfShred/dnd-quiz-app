@@ -31,7 +31,8 @@ class _ResultState extends State<Result> {
         recommendedClass: recommendedClass,
         recommendedRace: recommendedRace,
         recommendedBackground: recommendedBackground,
-        characterName: "");
+        characterName: "",
+        abilityScores: []);
 
     await dbHelper.insertCharacter(character);
     debugPrint("Character saved");
@@ -48,6 +49,7 @@ class _ResultState extends State<Result> {
     dbHelper = DatabaseHelper();
     dbHelper.initDB().whenComplete(() async {
       setState(() {
+        //dbHelper.createTable();
         debugPrint('Database initialized');
       });
     });
