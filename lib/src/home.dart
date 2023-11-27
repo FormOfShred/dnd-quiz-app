@@ -1,8 +1,33 @@
 import 'package:dungeon_buddy/data/character_state_data.dart';
+import 'package:dungeon_buddy/model/database_helper.dart';
 import 'package:flutter/material.dart';
 
-class Home extends StatelessWidget {
+class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
+
+  @override
+  State<Home> createState() => _HomeState();
+}
+
+class _HomeState extends State<Home> {
+  late DatabaseHelper dbHelper;
+  int characters = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    dbHelper = DatabaseHelper();
+    dbHelper.initDB().whenComplete(() {
+      setState(() {
+        debugPrint('Database initialized');
+        dbHelper.getCharacters().then((value) {
+          setState(() {
+            characters = value.length;
+          });
+        });
+      });
+    });
+  }
 
   @override
   Widget build(BuildContext context) => Scaffold(
@@ -19,17 +44,19 @@ class Home extends StatelessWidget {
           backgroundColor: Theme.of(context).colorScheme.secondary,
           toolbarHeight: 100,
         ),
-        body: const Center(
+        body: Center(
           child: SingleChildScrollView(
               child: Column(
             children: [
               /*Image.asset(
                 '',
               ),*/
-              MyCard(title: "Create Character", route: "/quiz"),
-              SizedBox(height: 20),
-              MyCard(title: "Character Overview", route: "/overview"),
-              SizedBox(height: 20),
+              const MyCard(title: "Create Character", route: "/quiz"),
+              const SizedBox(height: 20),
+              Visibility(
+                  visible: characters > 0,
+                  child: const MyCard(title: "Character Overview", route: "/overview"),
+                ),
             ],
           )),
         ),
