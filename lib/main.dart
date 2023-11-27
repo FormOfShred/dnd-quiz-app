@@ -1,6 +1,6 @@
 import 'package:dungeon_buddy/data/character_state_data.dart';
 import 'package:dungeon_buddy/model/character_model.dart';
-import 'package:dungeon_buddy/src/character.dart';
+import 'package:dungeon_buddy/src/character_view.dart';
 import 'package:dungeon_buddy/src/home.dart';
 import 'package:dungeon_buddy/src/overview.dart';
 import 'package:dungeon_buddy/src/quiz.dart';

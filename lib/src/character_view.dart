@@ -47,7 +47,19 @@ class _CharacterViewState extends State<CharacterView> {
             NameRow(
               widget: widget,
               dbHelper: dbHelper,
-            )
+            ),
+            const Row(
+              children: [
+                Padding(
+                  padding: EdgeInsets.all(8.0),
+                  child: SizedBox(
+                      height: 80,
+                      width: 80,
+                      child: Card(child: Center(child: Text("""STR
+  15""", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold))))),
+                ),
+              ],
+            ),
           ],
         ),
       ));
@@ -72,7 +84,9 @@ class NameRow extends StatelessWidget {
           child: Center(
             child: TextFormField(
               maxLines: null,
-              initialValue: widget.character.characterName,
+              initialValue: widget.character.characterName!.isEmpty
+                  ? "Add Character Name"
+                  : widget.character.characterName,
               decoration: const InputDecoration(
                 border: InputBorder.none,
               ),
