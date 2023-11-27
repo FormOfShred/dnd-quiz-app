@@ -11,7 +11,7 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   late DatabaseHelper dbHelper;
-  int characters = 0;
+  int characters = 1;
 
   @override
   void initState() {
@@ -20,11 +20,6 @@ class _HomeState extends State<Home> {
     dbHelper.initDB().whenComplete(() {
       setState(() {
         debugPrint('Database initialized');
-        dbHelper.getCharacters().then((value) {
-          setState(() {
-            characters = value.length;
-          });
-        });
       });
     });
   }
@@ -54,9 +49,10 @@ class _HomeState extends State<Home> {
               const MyCard(title: "Create Character", route: "/quiz"),
               const SizedBox(height: 20),
               Visibility(
-                  visible: characters > 0,
-                  child: const MyCard(title: "Character Overview", route: "/overview"),
-                ),
+                visible: characters >= 1,
+                child: const MyCard(
+                    title: "Character Overview", route: "/overview"),
+              ),
             ],
           )),
         ),
