@@ -11,7 +11,7 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   late DatabaseHelper dbHelper;
-  int characters = 1;
+  int characters = 0;
 
   @override
   void initState() {
@@ -19,7 +19,12 @@ class _HomeState extends State<Home> {
     dbHelper = DatabaseHelper();
     dbHelper.initDB().whenComplete(() {
       setState(() {
-        debugPrint('Database initialized');
+        // dbhelper.getcharacters
+        dbHelper.getCharacters().then((value) {
+          setState(() {
+            characters = value.length;
+          });
+        });
       });
     });
   }
