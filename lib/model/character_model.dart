@@ -3,16 +3,13 @@ class Character {
   final String recommendedClass;
   final String recommendedRace;
   final String recommendedBackground;
-  List<int> abilityScores = <int>[]; // 0 = STR, 1 = DEX, 2 = CON, 3 = INT, 4 = WIS, 5 = CHA
   String? characterName;
-
 
   Character(
       {this.id,
       required this.recommendedClass,
       required this.recommendedRace,
       required this.recommendedBackground,
-      required this.abilityScores,
       this.characterName});
 
   Character.fromMap(Map<String, dynamic> res)
@@ -20,7 +17,6 @@ class Character {
         recommendedClass = res["recommendedClass"],
         recommendedRace = res["recommendedRace"],
         recommendedBackground = res["recommendedBackground"],
-        abilityScores = res["abilityScores"],
         characterName = res["characterName"];
 
   Map<String, Object?> toMap() {
@@ -29,13 +25,12 @@ class Character {
       'recommendedClass': recommendedClass,
       'recommendedRace': recommendedRace,
       'recommendedBackground': recommendedBackground,
-      'abilityScores': abilityScores,
       'characterName': characterName
     };
   }
 
   @override
   String toString() {
-    return 'Character(recommendedClass: $recommendedClass, recommendedRace: $recommendedRace, recommendedBackground: $recommendedBackground, abilityScores: $abilityScores, characterName: $characterName)';
+    return 'Character(recommendedClass: $recommendedClass, recommendedRace: $recommendedRace, recommendedBackground: $recommendedBackground, characterName: $characterName)';
   }
 }

@@ -48,18 +48,6 @@ class _CharacterViewState extends State<CharacterView> {
               widget: widget,
               dbHelper: dbHelper,
             ),
-            const Row(
-              children: [
-                Padding(
-                  padding: EdgeInsets.all(8.0),
-                  child: SizedBox(
-                      height: 80,
-                      width: 80,
-                      child: Card(child: Center(child: Text("""STR
-  15""", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold))))),
-                ),
-              ],
-            ),
           ],
         ),
       ));

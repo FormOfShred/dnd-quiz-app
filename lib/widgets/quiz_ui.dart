@@ -75,7 +75,7 @@ class _QuizUIState extends State<QuizUI> {
                   style: TextStyle(
                       color: Theme.of(context).colorScheme.onSecondary,
                       fontSize: 20,
-                      fontWeight: FontWeight.w400)),
+                      fontWeight: FontWeight.w600)),
               const SizedBox(height: 20),
               Column(
                 children: [
@@ -92,41 +92,45 @@ class _QuizUIState extends State<QuizUI> {
                 ],
               ),
               const SizedBox(height: 10),
-              FilledButton(
-                onPressed: () => {
-                  if (tappedCardIndex == -1)
-                    {
-                      null,
-                    }
-                  else
-                    {
-                      /* writeCharacter(mainQuiz[widget.questionIndex]
-                          .answers[tappedCardIndex]
-                          .answer),
-                      readCharacters(), */
-                      for (var map in mainQuiz[widget.questionIndex]
-                          .answers[tappedCardIndex]
-                          .scores
-                          .entries)
-                        {
-                          widget.characterState
-                              .updateScores(map.key, map.value),
-                        },
-                      if (widget.questionIndex < mainQuiz.length - 1)
-                        {
-                          Navigator.pushNamed(context, '/quiz', arguments: {
-                            'questionIndex': widget.questionIndex + 1,
-                            'characterState': widget.characterState
-                          }),
-                        }
-                      else
-                        {
-                          Navigator.pushNamed(context, '/result',
-                              arguments: widget.characterState)
-                        }
-                    }
-                },
-                child: const Text("Submit"),
+              SizedBox(
+                width: 150,
+                height: 50,
+                child: FilledButton(
+                  onPressed: () => {
+                    if (tappedCardIndex == -1)
+                      {
+                        null,
+                      }
+                    else
+                      {
+                        for (var map in mainQuiz[widget.questionIndex]
+                            .answers[tappedCardIndex]
+                            .scores
+                            .entries)
+                          {
+                            widget.characterState
+                                .updateScores(map.key, map.value),
+                          },
+                        if (widget.questionIndex < mainQuiz.length - 1)
+                          {
+                            Navigator.pushNamed(context, '/quiz', arguments: {
+                              'questionIndex': widget.questionIndex + 1,
+                              'characterState': widget.characterState
+                            }),
+                          }
+                        else
+                          {
+                            Navigator.pushNamed(context, '/result',
+                                arguments: widget.characterState)
+                          }
+                      }
+                  },
+                  child: const Text("Submit",
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 15,
+                          fontWeight: FontWeight.w700)),
+                ),
               )
             ],
           ),

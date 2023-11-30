@@ -31,8 +31,7 @@ class _ResultState extends State<Result> {
         recommendedClass: recommendedClass,
         recommendedRace: recommendedRace,
         recommendedBackground: recommendedBackground,
-        characterName: "",
-        abilityScores: []);
+        characterName: "");
 
     await dbHelper.insertCharacter(character);
     debugPrint("Character saved");

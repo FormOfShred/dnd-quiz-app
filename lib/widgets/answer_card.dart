@@ -32,6 +32,7 @@ class AnswerCard extends StatelessWidget {
                       ? Theme.of(context).colorScheme.onPrimary
                       : Theme.of(context).colorScheme.onSurface,
                   fontSize: 20,
+                  fontWeight: FontWeight.w600,
                 )),
           ),
         ),
