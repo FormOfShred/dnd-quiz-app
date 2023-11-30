@@ -23,7 +23,8 @@ class CharacterState {
       "Half-Orc": 0,
       "Halfling": 0,
       "Human": 0,
-      "Tiefling": 0
+      "Tiefling": 0,
+      "Drow": 0,
     },
     {
       "Acolyte": 0,

@@ -4,48 +4,25 @@ import 'package:flutter/material.dart';
 final List<Quiz> raceData = [
   Quiz(question: "Pick a color", answers: [
     Answer(answer: Image.asset('assets/colors/red.jpg'), scores: {
-      "Dragonborn": 0,
-      "Dwarf": 2,
-      "Elf": 0,
-      "Gnome": 0,
-      "Half-Elf": 0,
-      "Half-Orc": 0,
-      "Halfling": 0,
-      "Human": 0,
-      "Tiefling": 0
+      "Dragonborn": 1,
+      "Tiefling": 2,
+      "Drow": -1,
     }),
     Answer(answer: Image.asset('assets/colors/blue.png'), scores: {
-      "Dragonborn": 0,
-      "Dwarf": 2,
-      "Elf": 0,
-      "Gnome": 0,
-      "Half-Elf": 0,
-      "Half-Orc": 0,
-      "Halfling": 0,
-      "Human": 0,
-      "Tiefling": 0
+      "Elf": 2,
+      "Half-Elf": 1,
+      "Dwarf": -1,
     }),
     Answer(answer: Image.asset('assets/colors/yellow.png'), scores: {
-      "Dragonborn": 0,
       "Dwarf": 2,
-      "Elf": 0,
-      "Gnome": 0,
-      "Half-Elf": 0,
-      "Half-Orc": 0,
-      "Halfling": 0,
-      "Human": 0,
-      "Tiefling": 0
+      "Halfling": 1,
+      "Elf": -1,
     }),
     Answer(answer: Image.asset('assets/colors/black.png'), scores: {
-      "Dragonborn": 0,
-      "Dwarf": 2,
-      "Elf": 0,
-      "Gnome": 0,
-      "Half-Elf": 0,
-      "Half-Orc": 0,
-      "Halfling": 0,
-      "Human": 0,
-      "Tiefling": 0
+      "Drow": 3,
+      "Half-Orc": 2,
+      "Human": 1,
+      "Dragonborn": -1,
     }),
   ])
 ];
