@@ -55,37 +55,41 @@ class _OverviewState extends State<Overview> {
               Navigator.pushNamedAndRemoveUntil(context, '/', (route) => false),
         ),
       ),
-      body: Column(
-        children: [
-          const SizedBox(height: 10),
-          for (var i = 0; i < characters.length; i++) ...[
-            Dismissible(
-                key: UniqueKey(),
-                direction: DismissDirection.endToStart,
-                onDismissed: (direction) => setState(() {
-                      dbHelper.deleteCharacter(characters[i].id!);
-                      characters.removeAt(i);
-                    }),
-                background: Container(color: Colors.red),
-                confirmDismiss: (direction) => showDialog(
-                      context: context,
-                      builder: (context) => AlertDialog(
-                        title: const Text("Delete Confirmation"),
-                        content: const Text(
-                            "Are you sure you want to delete this character?"),
-                        actions: [
-                          TextButton(
-                              onPressed: () => Navigator.of(context).pop(false),
-                              child: const Text("CANCEL")),
-                          TextButton(
-                              onPressed: () => Navigator.of(context).pop(true),
-                              child: const Text("DELETE"))
-                        ],
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            const SizedBox(height: 10),
+            for (var i = 0; i < characters.length; i++) ...[
+              Dismissible(
+                  key: UniqueKey(),
+                  direction: DismissDirection.endToStart,
+                  onDismissed: (direction) => setState(() {
+                        dbHelper.deleteCharacter(characters[i].id!);
+                        characters.removeAt(i);
+                      }),
+                  background: Container(color: Colors.red),
+                  confirmDismiss: (direction) => showDialog(
+                        context: context,
+                        builder: (context) => AlertDialog(
+                          title: const Text("Delete Confirmation"),
+                          content: const Text(
+                              "Are you sure you want to delete this character?"),
+                          actions: [
+                            TextButton(
+                                onPressed: () =>
+                                    Navigator.of(context).pop(false),
+                                child: const Text("CANCEL")),
+                            TextButton(
+                                onPressed: () =>
+                                    Navigator.of(context).pop(true),
+                                child: const Text("DELETE"))
+                          ],
+                        ),
                       ),
-                    ),
-                child: CharacterPreview(character: characters[i])),
-          ]
-        ],
+                  child: CharacterPreview(character: characters[i])),
+            ]
+          ],
+        ),
       ));
 }
 
@@ -116,15 +120,16 @@ class CharacterPreview extends StatelessWidget {
                 child: Row(
                   children: [
                     if (character.characterName!.isEmpty) ...[
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Text(character.recommendedClass,
-                            style: const TextStyle(fontSize: 20)),
+                      Expanded(
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(
+                            '${character.recommendedClass} - ${character.recommendedRace} - ${character.recommendedBackground}',
+                            style: const TextStyle(fontSize: 20),
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                        ),
                       ),
-                      Text('- ${character.recommendedRace}',
-                          style: const TextStyle(fontSize: 20)),
-                      Text(' - ${character.recommendedBackground}',
-                          style: const TextStyle(fontSize: 20)),
                     ] else ...[
                       Padding(
                         padding: const EdgeInsets.all(8.0),
