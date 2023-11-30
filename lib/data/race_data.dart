@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 final List<Quiz> raceData = [
   Quiz(question: "Pick a color", answers: [
-    Answer(answer: Image.asset('assets/red.jpg'), scores: {
+    Answer(answer: Image.asset('assets/colors/red.jpg'), scores: {
       "Dragonborn": 0,
       "Dwarf": 2,
       "Elf": 0,
@@ -14,7 +14,7 @@ final List<Quiz> raceData = [
       "Human": 0,
       "Tiefling": 0
     }),
-    Answer(answer: Image.asset('assets/blue.png'), scores: {
+    Answer(answer: Image.asset('assets/colors/blue.png'), scores: {
       "Dragonborn": 0,
       "Dwarf": 2,
       "Elf": 0,
@@ -25,7 +25,7 @@ final List<Quiz> raceData = [
       "Human": 0,
       "Tiefling": 0
     }),
-    Answer(answer: Image.asset('assets/yellow.png'), scores: {
+    Answer(answer: Image.asset('assets/colors/yellow.png'), scores: {
       "Dragonborn": 0,
       "Dwarf": 2,
       "Elf": 0,
@@ -36,7 +36,7 @@ final List<Quiz> raceData = [
       "Human": 0,
       "Tiefling": 0
     }),
-    Answer(answer: Image.asset('assets/black.png'), scores: {
+    Answer(answer: Image.asset('assets/colors/black.png'), scores: {
       "Dragonborn": 0,
       "Dwarf": 2,
       "Elf": 0,
