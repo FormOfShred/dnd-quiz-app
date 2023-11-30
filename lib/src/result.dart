@@ -51,8 +51,6 @@ class _ResultState extends State<Result> {
   Future<void> initializeDatabase() async {
     await dbHelper.initDB().whenComplete(() async {
       setState(() {
-        //dbHelper.dropTable();
-        //dbHelper.createTable();
         debugPrint('Database initialized');
       });
     });

@@ -6,7 +6,8 @@ class Quiz {
 }
 
 class Answer {
-  final String answer;
+  // answer can be string or image
+  final dynamic answer;
   final Map<String, int> scores;
 
   Answer({

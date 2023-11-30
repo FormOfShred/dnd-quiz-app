@@ -37,7 +37,6 @@ class CharacterState {
   ];
 
   void updateScores(String key, int value) {
-    // search through maps for key and add to it's value the given value
     for (var map in characterState) {
       if (map.containsKey(key)) {
         map[key] = map[key]! + value;
@@ -46,8 +45,6 @@ class CharacterState {
   }
 
   Map<String, String> calculateCharacter() {
-    // for each list in the map get the one with the highest score
-    // return something like {class: "Barbarian", race: "Elf", background: "Folk Hero"}
     Map<String, String> characterMap = {
       "Class": "",
       "Race": "",

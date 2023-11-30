@@ -1,8 +1,42 @@
 import 'package:dungeon_buddy/model/quiz_model.dart';
+import 'package:flutter/material.dart';
 
 final List<Quiz> raceData = [
-  Quiz(question: "What is your favorite animal?", answers: [
-    Answer(answer: "Dog", scores: {
+  Quiz(question: "Pick a color", answers: [
+    Answer(answer: Image.asset('assets/red.jpg'), scores: {
+      "Dragonborn": 0,
+      "Dwarf": 2,
+      "Elf": 0,
+      "Gnome": 0,
+      "Half-Elf": 0,
+      "Half-Orc": 0,
+      "Halfling": 0,
+      "Human": 0,
+      "Tiefling": 0
+    }),
+    Answer(answer: Image.asset('assets/blue.png'), scores: {
+      "Dragonborn": 0,
+      "Dwarf": 2,
+      "Elf": 0,
+      "Gnome": 0,
+      "Half-Elf": 0,
+      "Half-Orc": 0,
+      "Halfling": 0,
+      "Human": 0,
+      "Tiefling": 0
+    }),
+    Answer(answer: Image.asset('assets/yellow.png'), scores: {
+      "Dragonborn": 0,
+      "Dwarf": 2,
+      "Elf": 0,
+      "Gnome": 0,
+      "Half-Elf": 0,
+      "Half-Orc": 0,
+      "Halfling": 0,
+      "Human": 0,
+      "Tiefling": 0
+    }),
+    Answer(answer: Image.asset('assets/black.png'), scores: {
       "Dragonborn": 0,
       "Dwarf": 2,
       "Elf": 0,

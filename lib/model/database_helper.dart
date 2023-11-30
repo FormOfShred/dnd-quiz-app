@@ -1,4 +1,3 @@
-import 'package:dungeon_buddy/model/abilityscores_model.dart';
 import 'package:dungeon_buddy/model/character_model.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
@@ -28,22 +27,8 @@ class DatabaseHelper {
     characterName TEXT
   )
 ''');
-
-        await database.execute('''
-  CREATE TABLE abilityScores (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    characterId INTEGER NOT NULL,
-    strength INTEGER NOT NULL,
-    dexterity INTEGER NOT NULL,
-    constitution INTEGER NOT NULL,
-    intelligence INTEGER NOT NULL,
-    wisdom INTEGER NOT NULL,
-    charisma INTEGER NOT NULL,
-    FOREIGN KEY (characterId) REFERENCES characters (id)
-  )
-''');
       },
-      version: 2,
+      version: 3,
     );
   }
 
@@ -72,22 +57,5 @@ class DatabaseHelper {
   Future<void> updateCharacterName(int id, String characterName) async {
     await db.update('characters', {'characterName': characterName},
         where: 'id = ?', whereArgs: [id]);
-  }
-
-  // ABILITY SCORE
-  Future<int> insertAbilityScores(AbilityScores abilityScores) async {
-    int result = await db.insert('abilityScores', abilityScores.toMap());
-    return result;
-  }
-
-  Future<AbilityScores> getAbilityScores(int id) async {
-    final List<Map<String, Object?>> abilityScores = await db
-        .query('abilityScores', where: 'characterId = ?', whereArgs: [id]);
-    return AbilityScores.fromMap(abilityScores.first);
-  }
-
-  Future<void> updateAbilityScores(AbilityScores abilityScores) async {
-    await db.update('abilityScores', abilityScores.toMap(),
-        where: 'characterId = ?', whereArgs: [abilityScores.characterId]);
   }
 }
