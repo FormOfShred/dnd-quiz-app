@@ -71,6 +71,10 @@ flutter:
     - assets/colors/blue.png
     - assets/colors/yellow.png
     - assets/colors/black.png
+    - assets/animals/owl.jpg
+    - assets/animals/cat.jpg
+    - assets/animals/wolf.jpg
+    - assets/animals/snake.jpg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

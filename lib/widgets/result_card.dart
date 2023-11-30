@@ -32,21 +32,21 @@ class ResultCard extends StatelessWidget {
                   style: TextStyle(
                       color: Theme.of(context).colorScheme.onSurface,
                       fontSize: 20,
-                      fontWeight: FontWeight.w400),
+                      fontWeight: FontWeight.w600),
                 ),
                 Text(
                   "Race: ${character["Race"]}",
                   style: TextStyle(
                       color: Theme.of(context).colorScheme.onSurface,
                       fontSize: 20,
-                      fontWeight: FontWeight.w400),
+                      fontWeight: FontWeight.w600),
                 ),
                 Text(
                   "Background: ${character["Background"]}",
                   style: TextStyle(
                       color: Theme.of(context).colorScheme.onSurface,
                       fontSize: 20,
-                      fontWeight: FontWeight.w400),
+                      fontWeight: FontWeight.w600),
                 )
               ],
             ),
