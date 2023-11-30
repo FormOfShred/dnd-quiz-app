@@ -29,9 +29,11 @@ class _CharacterViewState extends State<CharacterView> {
       appBar: AppBar(
         shadowColor: Colors.black,
         elevation: 2,
-        title: const Text(
-          'Characters',
-          style: TextStyle(
+        title: Text(
+          widget.character.characterName!.isEmpty
+              ? 'Character'
+              : widget.character.characterName!,
+          style: const TextStyle(
             color: Colors.white,
           ),
         ),
