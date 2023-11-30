@@ -46,8 +46,12 @@ class _ResultState extends State<Result> {
   void initState() {
     super.initState();
     dbHelper = DatabaseHelper();
-    dbHelper.initDB().whenComplete(() async {
+  }
+
+  Future<void> initializeDatabase() async {
+    await dbHelper.initDB().whenComplete(() async {
       setState(() {
+        //dbHelper.dropTable();
         //dbHelper.createTable();
         debugPrint('Database initialized');
       });
@@ -72,19 +76,27 @@ class _ResultState extends State<Result> {
               Navigator.pushNamedAndRemoveUntil(context, '/', (route) => false),
         ),
       ),
-      body: Center(
-          child: SingleChildScrollView(
-              child: Padding(
-                  padding: const EdgeInsets.all(20.0),
-                  child: Column(
-                    children: [
-                      ResultCard(
-                        character: characterData(widget.characterState),
-                      ),
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      SaveButton(onTap: saveCharacter)
-                    ],
-                  )))));
+      body: FutureBuilder(
+          future: dbHelper.initDB(),
+          builder: (context, snapshot) {
+            if (snapshot.connectionState == ConnectionState.done) {
+              return Center(
+                  child: SingleChildScrollView(
+                      child: Padding(
+                          padding: const EdgeInsets.all(20.0),
+                          child: Column(
+                            children: [
+                              ResultCard(
+                                character: characterData(widget.characterState),
+                              ),
+                              const SizedBox(
+                                height: 20,
+                              ),
+                              SaveButton(onTap: saveCharacter)
+                            ],
+                          ))));
+            } else {
+              return const Center(child: CircularProgressIndicator());
+            }
+          }));
 }
