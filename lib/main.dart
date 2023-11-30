@@ -26,6 +26,7 @@ class MyApp extends StatelessWidget {
         textTheme: GoogleFonts.cinzelTextTheme(
           Theme.of(context).textTheme,
         ),
+        fontFamily: GoogleFonts.cinzel().fontFamily,
       ),
       routes: {
         '/quiz': (context) {

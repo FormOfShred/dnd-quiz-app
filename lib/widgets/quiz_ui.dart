@@ -66,75 +66,94 @@ class _QuizUIState extends State<QuizUI> {
   Widget build(BuildContext context) {
     return Center(
       child: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(20.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+        child: Column(children: [
+          Column(
             children: [
-              Text(mainQuiz[widget.questionIndex].question,
-                  style: TextStyle(
-                      color: Theme.of(context).colorScheme.onSecondary,
-                      fontSize: 20,
-                      fontWeight: FontWeight.w600)),
               const SizedBox(height: 20),
-              Column(
-                children: [
-                  for (var i = 0;
-                      i < mainQuiz[widget.questionIndex].answers.length;
-                      i++) ...[
-                    AnswerCard(
-                      answer: mainQuiz[widget.questionIndex].answers[i].answer,
-                      isTapped: tappedCardIndex == i,
-                      onTap: () => onTapCard(i),
-                    ),
-                    const SizedBox(height: 10),
-                  ],
-                ],
+              Text(
+                "Question ${widget.questionIndex + 1} of ${mainQuiz.length}",
+                style: TextStyle(
+                    color: Theme.of(context).colorScheme.onSecondary,
+                    fontSize: 15,
+                    fontWeight: FontWeight.bold),
               ),
               const SizedBox(height: 10),
-              SizedBox(
-                width: 150,
-                height: 50,
-                child: FilledButton(
-                  onPressed: () => {
-                    if (tappedCardIndex == -1)
-                      {
-                        null,
-                      }
-                    else
-                      {
-                        for (var map in mainQuiz[widget.questionIndex]
-                            .answers[tappedCardIndex]
-                            .scores
-                            .entries)
-                          {
-                            widget.characterState
-                                .updateScores(map.key, map.value),
-                          },
-                        if (widget.questionIndex < mainQuiz.length - 1)
-                          {
-                            Navigator.pushNamed(context, '/quiz', arguments: {
-                              'questionIndex': widget.questionIndex + 1,
-                              'characterState': widget.characterState
-                            }),
-                          }
-                        else
-                          {
-                            Navigator.pushNamed(context, '/result',
-                                arguments: widget.characterState)
-                          }
-                      }
-                  },
-                  child: const Text("Submit",
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 15,
-                          fontWeight: FontWeight.w700)),
+              Padding(
+                padding: const EdgeInsets.all(20.0),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(mainQuiz[widget.questionIndex].question,
+                        style: TextStyle(
+                            color: Theme.of(context).colorScheme.onSecondary,
+                            fontSize: 20,
+                            fontWeight: FontWeight.w600)),
+                    const SizedBox(height: 20),
+                    Column(
+                      children: [
+                        for (var i = 0;
+                            i < mainQuiz[widget.questionIndex].answers.length;
+                            i++) ...[
+                          AnswerCard(
+                            answer: mainQuiz[widget.questionIndex]
+                                .answers[i]
+                                .answer,
+                            isTapped: tappedCardIndex == i,
+                            onTap: () => onTapCard(i),
+                          ),
+                          const SizedBox(height: 10),
+                        ],
+                      ],
+                    ),
+                    const SizedBox(height: 10),
+                    SizedBox(
+                      width: 150,
+                      height: 50,
+                      child: FilledButton(
+                        onPressed: () => {
+                          if (tappedCardIndex == -1)
+                            {
+                              null,
+                            }
+                          else
+                            {
+                              for (var map in mainQuiz[widget.questionIndex]
+                                  .answers[tappedCardIndex]
+                                  .scores
+                                  .entries)
+                                {
+                                  widget.characterState
+                                      .updateScores(map.key, map.value),
+                                },
+                              if (widget.questionIndex < mainQuiz.length - 1)
+                                {
+                                  Navigator.pushNamed(context, '/quiz',
+                                      arguments: {
+                                        'questionIndex':
+                                            widget.questionIndex + 1,
+                                        'characterState': widget.characterState
+                                      }),
+                                }
+                              else
+                                {
+                                  Navigator.pushNamed(context, '/result',
+                                      arguments: widget.characterState)
+                                }
+                            }
+                        },
+                        child: const Text("Submit",
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 15,
+                                fontWeight: FontWeight.w700)),
+                      ),
+                    )
+                  ],
                 ),
-              )
+              ),
             ],
           ),
-        ),
+        ]),
       ),
     );
   }
