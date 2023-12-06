@@ -112,10 +112,11 @@ class CharacterPreview extends StatelessWidget {
           },
           child: Card(
               color: Theme.of(context).colorScheme.surface,
-              elevation: 5,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(0),
-              ),
+              elevation: 8,
+              shape: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(10),
+                  borderSide:
+                      BorderSide(color: Theme.of(context).colorScheme.primary)),
               child: Center(
                 child: Row(
                   children: [
