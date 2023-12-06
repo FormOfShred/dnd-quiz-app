@@ -44,64 +44,25 @@ class _CharacterViewState extends State<CharacterView> {
           children: [
             SizedBox(
               height: 200,
-              child: BaseInformation(character: widget.character),
-            ),
-            NameRow(
-              widget: widget,
-              dbHelper: dbHelper,
+              child: BaseInformation(
+                character: widget.character,
+                dbHelper: dbHelper,
+              ),
             ),
           ],
         ),
       ));
 }
 
-class NameRow extends StatelessWidget {
-  const NameRow({
-    super.key,
-    required this.widget,
-    required this.dbHelper,
-  });
-
-  final CharacterView widget;
-  final DatabaseHelper dbHelper;
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        SizedBox(
-          width: 250,
-          child: Center(
-            child: TextFormField(
-              maxLines: null,
-              initialValue: widget.character.characterName!.isEmpty
-                  ? "Add Character Name"
-                  : widget.character.characterName,
-              decoration: const InputDecoration(
-                border: InputBorder.none,
-              ),
-              onChanged: (value) => {
-                dbHelper.updateCharacterName(widget.character.id!, value),
-                widget.character.characterName = value
-              },
-              style: TextStyle(
-                  fontSize: 20,
-                  color: Theme.of(context).colorScheme.onBackground),
-            ),
-          ),
-        )
-      ],
-    );
-  }
-}
-
 class BaseInformation extends StatelessWidget {
   const BaseInformation({
     super.key,
     required this.character,
+    required this.dbHelper,
   });
 
   final Character character;
+  final DatabaseHelper dbHelper;
 
   @override
   Widget build(BuildContext context) {
@@ -110,21 +71,47 @@ class BaseInformation extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [Text('Picture?')]),
       Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              SizedBox(
+                width: 150,
+                child: Center(
+                  child: TextFormField(
+                    maxLines: null,
+                    initialValue: character.characterName!.isEmpty
+                        ? "Choose Name"
+                        : character.characterName,
+                    decoration: const InputDecoration(
+                      border: InputBorder.none,
+                    ),
+                    onChanged: (value) => {
+                      dbHelper.updateCharacterName(character.id!, value),
+                      character.characterName = value
+                    },
+                    style: TextStyle(
+                        fontSize: 16,
+                        color: Theme.of(context).colorScheme.onBackground),
+                  ),
+                ),
+              ),
+            ],
+          ),
           Text(character.recommendedClass,
               style: TextStyle(
-                  fontSize: 20,
+                  fontSize: 14,
                   color: Theme.of(context).colorScheme.onBackground)),
           Text(character.recommendedRace,
               style: TextStyle(
-                  fontSize: 20,
+                  fontSize: 14,
                   color: Theme.of(context).colorScheme.onBackground)),
           Text(
             character.recommendedBackground,
             style: TextStyle(
-                fontSize: 20,
+                fontSize: 14,
                 color: Theme.of(context).colorScheme.onBackground),
           ),
         ],
