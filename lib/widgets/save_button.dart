@@ -23,7 +23,7 @@ class SaveButton extends StatelessWidget {
             child: Text("Save Character",
                 style: TextStyle(
                   color: Theme.of(context).colorScheme.onPrimary,
-                  fontSize: 20,
+                  fontSize: 15,
                 )),
           ),
         ),

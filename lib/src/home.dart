@@ -91,7 +91,7 @@ class MyCard extends StatelessWidget {
                   child: Text(title,
                       style: TextStyle(
                           color: Theme.of(context).colorScheme.onSecondary,
-                          fontSize: 20))),
+                          fontSize: 18))),
             )),
       );
 }

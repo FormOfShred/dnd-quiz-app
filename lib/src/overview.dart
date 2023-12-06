@@ -125,7 +125,8 @@ class CharacterPreview extends StatelessWidget {
                           padding: const EdgeInsets.all(8.0),
                           child: Text(
                             '${character.recommendedClass} - ${character.recommendedRace} - ${character.recommendedBackground}',
-                            style: const TextStyle(fontSize: 20),
+                            style: const TextStyle(
+                                fontSize: 17, fontWeight: FontWeight.w600),
                             overflow: TextOverflow.ellipsis,
                           ),
                         ),
@@ -134,7 +135,8 @@ class CharacterPreview extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Text(character.characterName!,
-                            style: const TextStyle(fontSize: 20)),
+                            style: const TextStyle(
+                                fontSize: 17, fontWeight: FontWeight.w600)),
                       ),
                     ]
                   ],

@@ -87,7 +87,7 @@ class TextAnswer extends StatelessWidget {
                   color: isTapped
                       ? Theme.of(context).colorScheme.onPrimary
                       : Theme.of(context).colorScheme.onSurface,
-                  fontSize: 20,
+                  fontSize: 16,
                   fontWeight: FontWeight.w600,
                 )),
           ),
