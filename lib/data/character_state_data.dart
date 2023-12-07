@@ -50,7 +50,8 @@ class CharacterState {
       "Class": "",
       "Race": "",
       "Background": "",
-      "name": ""
+      "Name": "",
+      "Image": "",
     };
 
     // find class with highest int

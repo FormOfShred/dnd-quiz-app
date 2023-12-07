@@ -40,12 +40,12 @@ class _OverviewState extends State<Overview> {
   @override
   Widget build(BuildContext context) => Scaffold(
       appBar: AppBar(
-        shadowColor: Colors.black,
+        shadowColor: Theme.of(context).colorScheme.onPrimary,
         elevation: 2,
-        title: const Text(
+        title: Text(
           'Characters',
           style: TextStyle(
-            color: Colors.black,
+            color: Theme.of(context).colorScheme.onPrimary,
           ),
         ),
         backgroundColor: Theme.of(context).colorScheme.secondary,

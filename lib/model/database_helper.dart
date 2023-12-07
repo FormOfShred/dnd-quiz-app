@@ -24,11 +24,12 @@ class DatabaseHelper {
     recommendedClass TEXT NOT NULL,
     recommendedRace TEXT NOT NULL,
     recommendedBackground TEXT NOT NULL,
-    characterName TEXT
+    characterName TEXT,
+    characterImage BLOB
   )
 ''');
       },
-      version: 3,
+      version: 4,
     );
   }
 
@@ -56,6 +57,11 @@ class DatabaseHelper {
 
   Future<void> updateCharacterName(int id, String characterName) async {
     await db.update('characters', {'characterName': characterName},
+        where: 'id = ?', whereArgs: [id]);
+  }
+
+  Future<void> updateCharacterImage(int id, String characterImage) async {
+    await db.update('characters', {'characterImage': characterImage},
         where: 'id = ?', whereArgs: [id]);
   }
 }

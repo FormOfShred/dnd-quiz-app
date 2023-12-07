@@ -1,6 +1,7 @@
 import 'package:dungeon_buddy/model/character_model.dart';
 import 'package:dungeon_buddy/model/database_helper.dart';
 import 'package:flutter/material.dart';
+import 'package:getwidget/components/avatar/gf_avatar.dart';
 
 class CharacterView extends StatefulWidget {
   final Character character;
@@ -27,14 +28,14 @@ class _CharacterViewState extends State<CharacterView> {
   @override
   Widget build(BuildContext context) => Scaffold(
       appBar: AppBar(
-        shadowColor: Colors.black,
+        shadowColor: Theme.of(context).colorScheme.onPrimary,
         elevation: 2,
         title: Text(
           widget.character.characterName!.isEmpty
               ? 'Character'
               : widget.character.characterName!,
-          style: const TextStyle(
-            color: Colors.black,
+          style: TextStyle(
+            color: Theme.of(context).colorScheme.onPrimary,
           ),
         ),
         backgroundColor: Theme.of(context).colorScheme.secondary,
@@ -67,9 +68,22 @@ class BaseInformation extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
-      const Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [Text('Picture?')]),
+      GestureDetector(
+        onTap: () => {
+          debugPrint('Avatar tapped'),
+        },
+        child: GFAvatar(
+          radius: 50,
+          backgroundImage: null,
+          backgroundColor: Colors.transparent,
+          //backgroundColor: Theme.of(context).colorScheme.primary,
+          child: Icon(
+            Icons.person,
+            size: 50,
+            color: Theme.of(context).colorScheme.onPrimary,
+          ),
+        ),
+      ),
       Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.start,

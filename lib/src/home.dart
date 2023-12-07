@@ -32,12 +32,12 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(
-          shadowColor: Colors.black,
+          shadowColor: Theme.of(context).colorScheme.onPrimary,
           elevation: 2,
-          title: const Text(
+          title: Text(
             'Dungeon Buddy',
             style: TextStyle(
-              color: Colors.black,
+              color: Theme.of(context).colorScheme.onPrimary,
             ),
           ),
           centerTitle: true,

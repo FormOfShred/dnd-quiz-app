@@ -59,12 +59,12 @@ class _ResultState extends State<Result> {
   @override
   Widget build(BuildContext context) => Scaffold(
       appBar: AppBar(
-        shadowColor: Colors.black,
+        shadowColor: Theme.of(context).colorScheme.onPrimary,
         elevation: 2,
-        title: const Text(
+        title: Text(
           'Result',
           style: TextStyle(
-            color: Colors.black,
+            color: Theme.of(context).colorScheme.onPrimary,
           ),
         ),
         backgroundColor: Theme.of(context).colorScheme.secondary,
