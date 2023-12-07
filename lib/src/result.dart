@@ -2,7 +2,6 @@ import 'package:dungeon_buddy/data/character_state_data.dart';
 import 'package:dungeon_buddy/model/character_model.dart';
 import 'package:dungeon_buddy/model/database_helper.dart';
 import 'package:dungeon_buddy/widgets/result_card.dart';
-import 'package:dungeon_buddy/widgets/save_button.dart';
 import 'package:flutter/material.dart';
 
 class Result extends StatefulWidget {
@@ -86,11 +85,8 @@ class _ResultState extends State<Result> {
                             children: [
                               ResultCard(
                                 character: characterData(widget.characterState),
+                                onTap: saveCharacter,
                               ),
-                              const SizedBox(
-                                height: 20,
-                              ),
-                              SaveButton(onTap: saveCharacter)
                             ],
                           ))));
             } else {

@@ -1,56 +1,57 @@
 import 'package:flutter/material.dart';
+import 'package:getwidget/getwidget.dart';
 
 class ResultCard extends StatelessWidget {
   final Map<String, String> character;
+  final Function() onTap;
   const ResultCard({
     super.key,
     required this.character,
+    required this.onTap,
   });
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 500,
-      child: Card(
-          color: Theme.of(context).colorScheme.surface,
-          elevation: 5,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(10),
+      child: GFCard(
+        elevation: 5,
+        title: GFListTile(
+          title: Text(
+            'YOUR CHARACTER',
+            style: TextStyle(
+                color: Theme.of(context).colorScheme.onSurface,
+                fontSize: 18,
+                fontWeight: FontWeight.bold),
           ),
-          child: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text("YOUR CHARACTER",
-                    style: TextStyle(
-                        color: Theme.of(context).colorScheme.onSurface,
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold)),
-                const SizedBox(height: 20),
-                Text(
-                  'Class: ${character["Class"]}',
-                  style: TextStyle(
-                      color: Theme.of(context).colorScheme.onSurface,
-                      fontSize: 16,
-                      fontWeight: FontWeight.w600),
-                ),
-                Text(
-                  "Race: ${character["Race"]}",
-                  style: TextStyle(
-                      color: Theme.of(context).colorScheme.onSurface,
-                      fontSize: 16,
-                      fontWeight: FontWeight.w600),
-                ),
-                Text(
-                  "Background: ${character["Background"]}",
-                  style: TextStyle(
-                      color: Theme.of(context).colorScheme.onSurface,
-                      fontSize: 16,
-                      fontWeight: FontWeight.w600),
-                )
-              ],
-            ),
-          )),
+          subTitle: Text('''
+Class: ${character["Class"]}
+Race: ${character["Race"]}
+Background: ${character["Background"]}
+''',
+              style: TextStyle(
+                  color: Theme.of(context).colorScheme.onSurface,
+                  fontSize: 16,
+                  fontWeight: FontWeight.w500)),
+        ),
+        buttonBar: GFButtonBar(children: <Widget>[
+          GFButton(
+            onPressed: () {
+              onTap();
+            },
+            text: 'Save character',
+            icon: const Icon(Icons.save),
+            color: Theme.of(context).colorScheme.primary,
+          ),
+          GFButton(
+            onPressed: () {
+              Navigator.pushNamedAndRemoveUntil(context, '/', (route) => false);
+            },
+            text: 'Home',
+            icon: const Icon(Icons.home),
+            color: Theme.of(context).colorScheme.primary,
+          ),
+        ]),
+      ),
     );
   }
 }
