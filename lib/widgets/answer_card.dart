@@ -34,8 +34,7 @@ class ImageAnswer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 100,
-      width: 100,
+      height: 60,
       child: GestureDetector(
         onTap: onTap,
         child: Card(
@@ -46,8 +45,19 @@ class ImageAnswer extends StatelessWidget {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10),
           ),
-          child: Center(
-            child: answer,
+          child: Row(
+            children: [
+              ClipRRect(
+                  borderRadius: BorderRadius.circular(10),
+                  child: Image(
+                    image: answer.image,
+                    semanticLabel: answer.semanticLabel,
+                  )),
+              const SizedBox(width: 10),
+              Text(answer.semanticLabel.toString(),
+                  style: const TextStyle(
+                      fontWeight: FontWeight.w600, fontSize: 16)),
+            ],
           ),
         ),
       ),

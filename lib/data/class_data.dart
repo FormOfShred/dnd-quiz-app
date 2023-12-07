@@ -81,30 +81,47 @@ final List<Quiz> classData = [
     }),
   ]),
   Quiz(question: "Choose a pet", answers: [
-    Answer(answer: Image.asset('assets/animals/owl.jpg'), scores: {
-      "Paladin": 3,
-      "Fighter": 2,
-      "Druid": 1,
-      "Ranger": -1,
-    }),
-    Answer(answer: Image.asset('assets/animals/cat.jpg'), scores: {
-      "Wizard": 3,
-      "Rogue": 2,
-      "Cleric": 1,
-      "Sorcerer": -1,
-    }),
-    Answer(answer: Image.asset('assets/animals/wolf.jpg'), scores: {
-      "Ranger": 3,
-      "Barbarian": 2,
-      "Monk": 1,
-      "Paladin": -1,
-    }),
-    Answer(answer: Image.asset('assets/animals/snake.jpg'), scores: {
-      "Sorcerer": 3,
-      "Warlock": 2,
-      "Bard": 1,
-      "Wizard": -1,
-    }),
+    Answer(
+        answer: Image.asset(
+          'assets/animals/owl.jpg',
+          semanticLabel: 'Owl',
+        ),
+        scores: {
+          "Paladin": 3,
+          "Fighter": 2,
+          "Druid": 1,
+          "Ranger": -1,
+        }),
+    Answer(
+        answer: Image.asset(
+          'assets/animals/cat.jpg',
+          semanticLabel: 'Cat',
+        ),
+        scores: {
+          "Wizard": 3,
+          "Rogue": 2,
+          "Cleric": 1,
+          "Sorcerer": -1,
+        }),
+    Answer(
+        answer: Image.asset(
+          'assets/animals/wolf.jpg',
+          semanticLabel: 'Wolf',
+        ),
+        scores: {
+          "Ranger": 3,
+          "Barbarian": 2,
+          "Monk": 1,
+          "Paladin": -1,
+        }),
+    Answer(
+        answer: Image.asset('assets/animals/snake.jpg', semanticLabel: 'Snake'),
+        scores: {
+          "Sorcerer": 3,
+          "Warlock": 2,
+          "Bard": 1,
+          "Wizard": -1,
+        }),
   ]),
   Quiz(question: "Choose a season", answers: [
     Answer(answer: "Spring", scores: {
