@@ -52,7 +52,7 @@ class _HomeState extends State<Home> {
                 '',
               ),*/
               const MyCard(title: "Create Character", route: "/quiz"),
-              const SizedBox(height: 20),
+              const MyCard(title: "Randomize", route: "/"),
               Visibility(
                 visible: characters >= 1,
                 child: const MyCard(

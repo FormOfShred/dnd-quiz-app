@@ -38,7 +38,10 @@ class ImageAnswer extends StatelessWidget {
       child: GestureDetector(
         onTap: onTap,
         child: Card(
-          shadowColor: isTapped
+          /*shadowColor: isTapped
+              ? Theme.of(context).colorScheme.primary
+              : Theme.of(context).colorScheme.surface,*/
+          color: isTapped
               ? Theme.of(context).colorScheme.primary
               : Theme.of(context).colorScheme.surface,
           elevation: isTapped ? 20 : 5,
