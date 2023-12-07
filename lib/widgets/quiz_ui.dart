@@ -73,7 +73,7 @@ class _QuizUIState extends State<QuizUI> {
               Text(
                 "Question ${widget.questionIndex + 1} of ${mainQuiz.length}",
                 style: TextStyle(
-                    color: Theme.of(context).colorScheme.onSecondary,
+                    color: Theme.of(context).colorScheme.onBackground,
                     fontSize: 13,
                     fontWeight: FontWeight.bold),
               ),
@@ -85,7 +85,7 @@ class _QuizUIState extends State<QuizUI> {
                   children: [
                     Text(mainQuiz[widget.questionIndex].question,
                         style: TextStyle(
-                            color: Theme.of(context).colorScheme.onSecondary,
+                            color: Theme.of(context).colorScheme.onBackground,
                             fontSize: 18,
                             fontWeight: FontWeight.w600)),
                     const SizedBox(height: 20),

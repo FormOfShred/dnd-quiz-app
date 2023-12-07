@@ -17,7 +17,7 @@ class Quiz extends StatelessWidget {
           title: const Text(
             'Quiz',
             style: TextStyle(
-              color: Colors.white,
+              color: Colors.black,
             ),
           ),
           backgroundColor: Theme.of(context).colorScheme.secondary,

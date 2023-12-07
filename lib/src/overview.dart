@@ -45,7 +45,7 @@ class _OverviewState extends State<Overview> {
         title: const Text(
           'Characters',
           style: TextStyle(
-            color: Colors.white,
+            color: Colors.black,
           ),
         ),
         backgroundColor: Theme.of(context).colorScheme.secondary,

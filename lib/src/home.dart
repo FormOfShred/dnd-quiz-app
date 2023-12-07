@@ -37,7 +37,7 @@ class _HomeState extends State<Home> {
           title: const Text(
             'Dungeon Buddy',
             style: TextStyle(
-              color: Colors.white,
+              color: Colors.black,
             ),
           ),
           centerTitle: true,
@@ -91,7 +91,8 @@ class MyCard extends StatelessWidget {
                   child: Text(title,
                       style: TextStyle(
                           color: Theme.of(context).colorScheme.onSecondary,
-                          fontSize: 18))),
+                          fontSize: 18,
+                          fontWeight: FontWeight.w600))),
             )),
       );
 }

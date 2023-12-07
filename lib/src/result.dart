@@ -64,7 +64,7 @@ class _ResultState extends State<Result> {
         title: const Text(
           'Result',
           style: TextStyle(
-            color: Colors.white,
+            color: Colors.black,
           ),
         ),
         backgroundColor: Theme.of(context).colorScheme.secondary,

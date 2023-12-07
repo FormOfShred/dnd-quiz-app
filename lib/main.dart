@@ -50,9 +50,9 @@ class MyApp extends StatelessWidget {
   }
 }
 
-const myColorScheme = ColorScheme(
+/*const myColorScheme = ColorScheme(
     primary: Color(0xFFE78230), // Custom primary color
-    secondary: Color(0xff2D4159), // Custom secondary color
+    secondary: Color(0xFF2D4159), // Custom secondary color
     background: Color(0xFF272D43), // Custom background color
     surface: Color(0xFFCCDAE5), // Custom surface color
     onPrimary: Color(0xFFFFFFFF), // Custom text color on primary
@@ -60,6 +60,20 @@ const myColorScheme = ColorScheme(
     onBackground: Color(0xFFFFFFFF), // Custom text color on background
     onSurface: Color(0xFF000000),
     brightness: Brightness.dark,
+    error: Colors.red,
+    onError: Colors.white // Custom text color on surface
+    );*/
+
+const myColorScheme = ColorScheme(
+    primary: Color(0xFF44BBA4), // Custom primary color
+    secondary: Color(0xFFE7BB41), // Custom secondary color
+    background: Color(0xFF393E41), // Custom background color
+    surface: Color(0xFFD3D0CB), // Custom surface color
+    onPrimary: Color(0xFF000000), // Custom text color on primary
+    onSecondary: Color(0xFF000000), // Custom text color on secondary
+    onBackground: Color(0xFFFFFFFF), // Custom text color on background
+    onSurface: Color(0xFF000000),
+    brightness: Brightness.light,
     error: Colors.red,
     onError: Colors.white // Custom text color on surface
     );
