@@ -1,3 +1,5 @@
+import 'dart:math';
+
 class CharacterState {
   List<Map<String, int>> characterState = [
     {
@@ -86,6 +88,36 @@ class CharacterState {
       }
       characterMap["Background"] = highestBackgroundString;
     }
+
+    return characterMap;
+  }
+
+  Map<String, String> randomCharacter() {
+    CharacterState characterState = CharacterState();
+    Map<String, String> characterMap = {
+      "Class": "",
+      "Race": "",
+      "Background": "",
+      "Name": "",
+      "Image": "",
+    };
+
+    // get random class
+    int randomClass = Random().nextInt(12);
+    // find class with randomClass index
+    characterMap["Class"] =
+        characterState.characterState[0].entries.elementAt(randomClass).key;
+
+    // find race with highest int
+    int randomRace = Random().nextInt(10);
+    characterMap["Race"] =
+        characterState.characterState[1].entries.elementAt(randomRace).key;
+
+    // find background with highest int
+    int randomBackground = Random().nextInt(7);
+    characterMap["Background"] = characterState.characterState[2].entries
+        .elementAt(randomBackground)
+        .key;
 
     return characterMap;
   }

@@ -4,6 +4,7 @@ import 'package:dungeon_buddy/src/character_view.dart';
 import 'package:dungeon_buddy/src/home.dart';
 import 'package:dungeon_buddy/src/overview.dart';
 import 'package:dungeon_buddy/src/quiz.dart';
+import 'package:dungeon_buddy/src/random_character.dart';
 import 'package:dungeon_buddy/src/result.dart';
 import 'package:flutter/material.dart';
 //import 'package:google_fonts/google_fonts.dart';
@@ -44,6 +45,7 @@ class MyApp extends StatelessWidget {
               character:
                   ModalRoute.of(context)?.settings.arguments as Character,
             ),
+        '/random': (context) => const RandomCharacter(),
       },
       home: const Home(),
     );
