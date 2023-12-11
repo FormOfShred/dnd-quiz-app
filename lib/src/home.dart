@@ -1,6 +1,7 @@
 import 'package:dungeon_buddy/data/character_state_data.dart';
 import 'package:dungeon_buddy/model/database_helper.dart';
 import 'package:flutter/material.dart';
+import 'package:getwidget/getwidget.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -58,14 +59,17 @@ class _HomeState extends State<Home> {
               child: Column(
             children: [
               const Text("Welcome to Dungeon Buddy!",
-                  style: TextStyle(fontSize: 24)),
+                  style: TextStyle(fontSize: 20)),
               const SizedBox(height: 20),
               const MyCard(title: "Start Quiz", route: "/quiz"),
+              const SizedBox(height: 20),
               const MyCard(title: "Randomize", route: "/random"),
               Visibility(
                 visible: characters >= 1,
-                child: const MyCard(
-                    title: "Character Overview", route: "/overview"),
+                child: const Column(children: [
+                  SizedBox(height: 20),
+                  MyCard(title: "Character Overview", route: "/overview")
+                ]),
               ),
             ],
           )),
@@ -80,28 +84,22 @@ class MyCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => SizedBox(
-        height: 100,
-        child: Card(
-            color: Theme.of(context).colorScheme.secondary,
-            elevation: 5,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(10),
-            ),
-            margin: const EdgeInsets.all(20),
-            child: InkWell(
-              onTap: () {
-                Navigator.pushNamed(context, route!, arguments: {
-                  'questionIndex': 0,
-                  'characterState': CharacterState(),
-                });
-              },
-              borderRadius: BorderRadius.circular(10),
-              child: Center(
-                  child: Text(title,
-                      style: TextStyle(
-                          color: Theme.of(context).colorScheme.onSecondary,
-                          fontSize: 18,
-                          fontWeight: FontWeight.w600))),
-            )),
-      );
+      height: 50,
+      child: GFButton(
+        onPressed: () {
+          Navigator.pushNamed(context, route!, arguments: {
+            'questionIndex': 0,
+            'characterState': CharacterState(),
+          });
+        },
+        text: title,
+        textStyle: const TextStyle(
+          fontSize: 18,
+        ),
+        type: GFButtonType.solid,
+        size: GFSize.LARGE,
+        color: Theme.of(context).colorScheme.secondary,
+        blockButton: true,
+        shape: GFButtonShape.pills,
+      ));
 }
