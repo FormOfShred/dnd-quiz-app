@@ -33,25 +33,25 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(
-          shadowColor: Theme.of(context).colorScheme.onPrimary,
+          shadowColor: Colors.black,
           elevation: 2,
           title: Column(
             children: [
               Image.asset(
                 'assets/logo/dungeon_buddy_logo.png',
                 height: 50,
-                color: Theme.of(context).colorScheme.onSecondary,
+                color: Theme.of(context).colorScheme.onPrimary,
               ),
               Text(
                 'Dungeon Buddy',
                 style: TextStyle(
-                  color: Theme.of(context).colorScheme.onSecondary,
+                  color: Theme.of(context).colorScheme.onPrimary,
                 ),
               ),
             ],
           ),
           centerTitle: true,
-          backgroundColor: Theme.of(context).colorScheme.secondary,
+          backgroundColor: Theme.of(context).colorScheme.primary,
           toolbarHeight: 100,
         ),
         body: Center(
@@ -93,12 +93,13 @@ class MyCard extends StatelessWidget {
           });
         },
         text: title,
-        textStyle: const TextStyle(
+        textStyle: TextStyle(
+          color: Theme.of(context).colorScheme.onPrimary,
           fontSize: 18,
         ),
         type: GFButtonType.solid,
         size: GFSize.LARGE,
-        color: Theme.of(context).colorScheme.secondary,
+        color: Theme.of(context).colorScheme.primary,
         blockButton: true,
         shape: GFButtonShape.pills,
       ));

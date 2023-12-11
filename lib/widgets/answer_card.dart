@@ -38,16 +38,14 @@ class ImageAnswer extends StatelessWidget {
       child: GestureDetector(
         onTap: onTap,
         child: Card(
-          /*shadowColor: isTapped
-              ? Theme.of(context).colorScheme.primary
-              : Theme.of(context).colorScheme.surface,*/
           color: isTapped
               ? Theme.of(context).colorScheme.primary
-              : Theme.of(context).colorScheme.surface,
+              : Theme.of(context).colorScheme.background,
           elevation: isTapped ? 20 : 5,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(10),
-          ),
+          shape: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(10),
+              borderSide:
+                  BorderSide(color: Theme.of(context).colorScheme.primary)),
           child: Row(
             children: [
               ClipRRect(
@@ -59,7 +57,7 @@ class ImageAnswer extends StatelessWidget {
               const SizedBox(width: 10),
               Text(answer.semanticLabel.toString(),
                   style: const TextStyle(
-                      fontWeight: FontWeight.w600, fontSize: 16)),
+                      fontWeight: FontWeight.w500, fontSize: 16)),
             ],
           ),
         ),
@@ -93,9 +91,8 @@ class TextAnswer extends StatelessWidget {
           elevation: 5,
           shape: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10),
-              borderSide: isTapped
-                  ? BorderSide(color: Theme.of(context).colorScheme.primary)
-                  : BorderSide(color: Theme.of(context).colorScheme.secondary)),
+              borderSide:
+                  BorderSide(color: Theme.of(context).colorScheme.primary)),
           child: Center(
             child: Text(answer,
                 style: TextStyle(
@@ -103,7 +100,7 @@ class TextAnswer extends StatelessWidget {
                       ? Theme.of(context).colorScheme.onPrimary
                       : Theme.of(context).colorScheme.onSurface,
                   fontSize: 16,
-                  fontWeight: FontWeight.w600,
+                  fontWeight: FontWeight.w500,
                 )),
           ),
         ),

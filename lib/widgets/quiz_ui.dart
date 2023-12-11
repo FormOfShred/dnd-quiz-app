@@ -7,6 +7,7 @@ import 'package:dungeon_buddy/data/race_data.dart';
 import 'package:dungeon_buddy/model/quiz_model.dart' as my_quiz_model;
 import 'package:dungeon_buddy/widgets/answer_card.dart';
 import 'package:flutter/material.dart';
+import 'package:getwidget/getwidget.dart';
 import 'package:path_provider/path_provider.dart';
 
 class QuizUI extends StatefulWidget {
@@ -69,13 +70,11 @@ class _QuizUIState extends State<QuizUI> {
         child: Column(children: [
           Column(
             children: [
-              const SizedBox(height: 20),
-              Text(
-                "Question ${widget.questionIndex + 1} of ${mainQuiz.length}",
-                style: TextStyle(
-                    color: Theme.of(context).colorScheme.onBackground,
-                    fontSize: 13,
-                    fontWeight: FontWeight.bold),
+              GFProgressBar(
+                percentage: (widget.questionIndex + 1) / mainQuiz.length,
+                backgroundColor: Theme.of(context).colorScheme.surface,
+                progressBarColor: Theme.of(context).colorScheme.primary,
+                type: GFProgressType.linear,
               ),
               const SizedBox(height: 10),
               Padding(
@@ -85,9 +84,9 @@ class _QuizUIState extends State<QuizUI> {
                   children: [
                     Text(mainQuiz[widget.questionIndex].question,
                         style: TextStyle(
-                            color: Theme.of(context).colorScheme.onBackground,
-                            fontSize: 18,
-                            fontWeight: FontWeight.w600)),
+                          color: Theme.of(context).colorScheme.onBackground,
+                          fontSize: 18,
+                        )),
                     const SizedBox(height: 20),
                     Column(
                       children: [
@@ -107,47 +106,43 @@ class _QuizUIState extends State<QuizUI> {
                     ),
                     const SizedBox(height: 10),
                     SizedBox(
-                      width: 150,
-                      height: 50,
-                      child: FilledButton(
-                        onPressed: () => {
-                          if (tappedCardIndex == -1)
-                            {
-                              null,
-                            }
-                          else
-                            {
+                        height: 50,
+                        child: GFButton(
+                          onPressed: () {
+                            if (tappedCardIndex == -1) {
+                              null;
+                            } else {
                               for (var map in mainQuiz[widget.questionIndex]
                                   .answers[tappedCardIndex]
                                   .scores
-                                  .entries)
-                                {
-                                  widget.characterState
-                                      .updateScores(map.key, map.value),
-                                },
-                              if (widget.questionIndex < mainQuiz.length - 1)
-                                {
-                                  Navigator.pushNamed(context, '/quiz',
-                                      arguments: {
-                                        'questionIndex':
-                                            widget.questionIndex + 1,
-                                        'characterState': widget.characterState
-                                      }),
-                                }
-                              else
-                                {
-                                  Navigator.pushNamed(context, '/result',
-                                      arguments: widget.characterState)
-                                }
+                                  .entries) {
+                                widget.characterState
+                                    .updateScores(map.key, map.value);
+                              }
+                              ;
+                              if (widget.questionIndex < mainQuiz.length - 1) {
+                                Navigator.pushNamed(context, '/quiz',
+                                    arguments: {
+                                      'questionIndex': widget.questionIndex + 1,
+                                      'characterState': widget.characterState
+                                    });
+                              } else {
+                                Navigator.pushNamed(context, '/result',
+                                    arguments: widget.characterState);
+                              }
                             }
-                        },
-                        child: const Text("Submit",
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 15,
-                                fontWeight: FontWeight.w700)),
-                      ),
-                    )
+                          },
+                          text: "Submit",
+                          textStyle: TextStyle(
+                            color: Theme.of(context).colorScheme.onPrimary,
+                            fontSize: 18,
+                          ),
+                          type: GFButtonType.solid,
+                          size: GFSize.LARGE,
+                          color: Theme.of(context).colorScheme.primary,
+                          blockButton: true,
+                          shape: GFButtonShape.pills,
+                        ))
                   ],
                 ),
               ),

@@ -39,16 +39,20 @@ Background: ${character["Background"]}
               onTap();
             },
             text: 'Save character',
-            icon: const Icon(Icons.save),
+            icon: Icon(Icons.save,
+                color: Theme.of(context).colorScheme.onPrimary, size: 20),
             color: Theme.of(context).colorScheme.primary,
+            shape: GFButtonShape.pills,
           ),
           GFButton(
             onPressed: () {
               Navigator.pushNamedAndRemoveUntil(context, '/', (route) => false);
             },
             text: 'Home',
-            icon: const Icon(Icons.home),
+            icon: Icon(Icons.home,
+                color: Theme.of(context).colorScheme.onPrimary, size: 20),
             color: Theme.of(context).colorScheme.primary,
+            shape: GFButtonShape.pills,
           ),
         ]),
       ),
