@@ -28,17 +28,17 @@ class _CharacterViewState extends State<CharacterView> {
   @override
   Widget build(BuildContext context) => Scaffold(
       appBar: AppBar(
-        shadowColor: Theme.of(context).colorScheme.onPrimary,
+        shadowColor: Colors.black,
         elevation: 2,
         title: Text(
           widget.character.characterName!.isEmpty
               ? 'Character'
               : widget.character.characterName!,
           style: TextStyle(
-            color: Theme.of(context).colorScheme.onSecondary,
+            color: Theme.of(context).colorScheme.onPrimary,
           ),
         ),
-        backgroundColor: Theme.of(context).colorScheme.secondary,
+        backgroundColor: Theme.of(context).colorScheme.primary,
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -76,11 +76,12 @@ class BaseInformation extends StatelessWidget {
           radius: 50,
           backgroundImage: null,
           backgroundColor: Colors.transparent,
-          //backgroundColor: Theme.of(context).colorScheme.primary,
+
+          ///backgroundColor: Theme.of(context).colorScheme.primary,
           child: Icon(
             Icons.person,
             size: 50,
-            color: Theme.of(context).colorScheme.onPrimary,
+            color: Theme.of(context).colorScheme.onBackground,
           ),
         ),
       ),

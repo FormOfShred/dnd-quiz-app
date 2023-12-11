@@ -56,15 +56,15 @@ class _RandomCharacterState extends State<RandomCharacter> {
   @override
   Widget build(BuildContext context) => Scaffold(
       appBar: AppBar(
-        shadowColor: Theme.of(context).colorScheme.onPrimary,
+        shadowColor: Colors.black,
         elevation: 2,
         title: Text(
           'Random Character',
           style: TextStyle(
-            color: Theme.of(context).colorScheme.onSecondary,
+            color: Theme.of(context).colorScheme.onPrimary,
           ),
         ),
-        backgroundColor: Theme.of(context).colorScheme.secondary,
+        backgroundColor: Theme.of(context).colorScheme.primary,
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
           onPressed: () =>
