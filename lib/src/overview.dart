@@ -111,7 +111,7 @@ class CharacterPreview extends StatelessWidget {
             Navigator.pushNamed(context, '/character', arguments: character)
           },
           child: Card(
-              color: Theme.of(context).colorScheme.surface,
+              color: Theme.of(context).colorScheme.background,
               elevation: 8,
               shape: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(10),
