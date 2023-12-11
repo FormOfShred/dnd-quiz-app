@@ -15,7 +15,6 @@ class _RandomCharacterState extends State<RandomCharacter> {
   late DatabaseHelper dbHelper;
 
   Map<String, String> randomCharacterData() {
-    print(CharacterState().characterState);
     return CharacterState().randomCharacter();
   }
 
@@ -62,7 +61,7 @@ class _RandomCharacterState extends State<RandomCharacter> {
         title: Text(
           'Random Character',
           style: TextStyle(
-            color: Theme.of(context).colorScheme.onPrimary,
+            color: Theme.of(context).colorScheme.onSecondary,
           ),
         ),
         backgroundColor: Theme.of(context).colorScheme.secondary,

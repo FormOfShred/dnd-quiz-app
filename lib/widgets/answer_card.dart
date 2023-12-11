@@ -89,11 +89,13 @@ class TextAnswer extends StatelessWidget {
         child: Card(
           color: isTapped
               ? Theme.of(context).colorScheme.primary
-              : Theme.of(context).colorScheme.surface,
+              : Theme.of(context).colorScheme.background,
           elevation: 5,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(10),
-          ),
+          shape: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(10),
+              borderSide: isTapped
+                  ? BorderSide(color: Theme.of(context).colorScheme.primary)
+                  : BorderSide(color: Theme.of(context).colorScheme.secondary)),
           child: Center(
             child: Text(answer,
                 style: TextStyle(

@@ -54,12 +54,12 @@ class MyApp extends StatelessWidget {
 
 const myColorScheme = ColorScheme(
     primary: Color(0xFF44BBA4), // Custom primary color
-    secondary: Color(0xFFE7BB41), // Custom secondary color
-    background: Color(0xFF393E41), // Custom background color
+    secondary: Color(0xFF4978E3), // Custom secondary color
+    background: Color(0xFFFFFFFF), // Custom background color
     surface: Color(0xFFD3D0CB), // Custom surface color
     onPrimary: Color(0xFF000000), // Custom text color on primary
-    onSecondary: Color(0xFF000000), // Custom text color on secondary
-    onBackground: Color(0xFFFFFFFF), // Custom text color on background
+    onSecondary: Color(0xFFFFFFFF), // Custom text color on secondary
+    onBackground: Color(0xFF000000), // Custom text color on background
     onSurface: Color(0xFF000000),
     brightness: Brightness.light,
     error: Colors.red,

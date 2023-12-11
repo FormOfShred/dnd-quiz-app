@@ -63,7 +63,7 @@ class _ResultState extends State<Result> {
         title: Text(
           'Result',
           style: TextStyle(
-            color: Theme.of(context).colorScheme.onPrimary,
+            color: Theme.of(context).colorScheme.onSecondary,
           ),
         ),
         backgroundColor: Theme.of(context).colorScheme.secondary,

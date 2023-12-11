@@ -34,11 +34,20 @@ class _HomeState extends State<Home> {
         appBar: AppBar(
           shadowColor: Theme.of(context).colorScheme.onPrimary,
           elevation: 2,
-          title: Text(
-            'Dungeon Buddy',
-            style: TextStyle(
-              color: Theme.of(context).colorScheme.onPrimary,
-            ),
+          title: Column(
+            children: [
+              Image.asset(
+                'assets/logo/dungeon_buddy_logo.png',
+                height: 50,
+                color: Theme.of(context).colorScheme.onSecondary,
+              ),
+              Text(
+                'Dungeon Buddy',
+                style: TextStyle(
+                  color: Theme.of(context).colorScheme.onSecondary,
+                ),
+              ),
+            ],
           ),
           centerTitle: true,
           backgroundColor: Theme.of(context).colorScheme.secondary,
@@ -48,10 +57,10 @@ class _HomeState extends State<Home> {
           child: SingleChildScrollView(
               child: Column(
             children: [
-              /*Image.asset(
-                '',
-              ),*/
-              const MyCard(title: "Create Character", route: "/quiz"),
+              const Text("Welcome to Dungeon Buddy!",
+                  style: TextStyle(fontSize: 24)),
+              const SizedBox(height: 20),
+              const MyCard(title: "Start Quiz", route: "/quiz"),
               const MyCard(title: "Randomize", route: "/random"),
               Visibility(
                 visible: characters >= 1,

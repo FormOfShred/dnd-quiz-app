@@ -35,7 +35,7 @@ class _CharacterViewState extends State<CharacterView> {
               ? 'Character'
               : widget.character.characterName!,
           style: TextStyle(
-            color: Theme.of(context).colorScheme.onPrimary,
+            color: Theme.of(context).colorScheme.onSecondary,
           ),
         ),
         backgroundColor: Theme.of(context).colorScheme.secondary,

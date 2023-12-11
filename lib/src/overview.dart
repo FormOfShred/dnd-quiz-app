@@ -45,7 +45,7 @@ class _OverviewState extends State<Overview> {
         title: Text(
           'Characters',
           style: TextStyle(
-            color: Theme.of(context).colorScheme.onPrimary,
+            color: Theme.of(context).colorScheme.onSecondary,
           ),
         ),
         backgroundColor: Theme.of(context).colorScheme.secondary,
