@@ -15,6 +15,11 @@ class ResultCard extends StatelessWidget {
     return SizedBox(
       child: GFCard(
         elevation: 5,
+        color: Theme.of(context).colorScheme.background,
+        shape: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(10),
+            borderSide:
+                BorderSide(color: Theme.of(context).colorScheme.primary)),
         title: GFListTile(
           title: Text(
             'YOUR CHARACTER',
