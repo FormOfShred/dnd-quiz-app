@@ -61,7 +61,7 @@ class _HomeState extends State<Home> {
               const Text("Welcome to Dungeon Buddy!",
                   style: TextStyle(fontSize: 20)),
               const SizedBox(height: 20),
-              const MyCard(title: "Start Quiz", route: "/quiz"),
+              const MyCard(title: "Start Qui", route: "/quiz"),
               const SizedBox(height: 20),
               const MyCard(title: "Randomize", route: "/random"),
               Visibility(
